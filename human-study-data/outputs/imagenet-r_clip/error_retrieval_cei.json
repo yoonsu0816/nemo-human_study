@@ -1,0 +1,37 @@
+{
+  "7291": {
+    "evaluator_response": {
+      "reasoning": "Adds an explicit lighting cue ('evenly lit') to eliminate harsh shadow edges while describing a simple full-body scene CLIP prefers.",
+      "solution": "a photo of an evenly lit whippet standing in a grassy field"
+    },
+    "cei": 38.940297812223434
+  },
+  "11513": {
+    "evaluator_response": {
+      "reasoning": "Includes 'oil-painted' to signal brush-stroke texture and uses a concise scene ('standing in tall grass') so CLIP focuses on painting style and overall pose.",
+      "solution": "a photo of an oil-painted cheetah standing in tall grass"
+    },
+    "cei": 69.81030702590942
+  },
+  "11533": {
+    "evaluator_response": {
+      "reasoning": "Specifies an unobstructed natural scene with a clean background so CLIP focuses on the cheetah's overall appearance instead of any adversarial patch artifact.",
+      "solution": "a photo of a cheetah standing in a grassy field with a clean background"
+    },
+    "cei": 52.34211981296539
+  },
+  "4351": {
+    "evaluator_response": {
+      "reasoning": "Pointing CLIP to a simple scene (calm lake, plain background) reduces the chance an adversarial patch in the frame dominates the embedding and refocuses the model on the whole goose silhouette and context.",
+      "solution": "a photo of a goose standing on a calm lake with plain background"
+    },
+    "cei": 19.704584777355194
+  },
+  "8434": {
+    "evaluator_response": {
+      "reasoning": "The adjective 'photorealistic' cues texture and shading to counter a line-drawing bias, while a simple scene ('standing in a grassy field') gives CLIP a holistic, contextual signal.",
+      "solution": "a photo of photorealistic border_collie standing in a grassy field"
+    },
+    "cei": 50.94587802886963
+  }
+}

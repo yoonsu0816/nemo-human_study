@@ -1,0 +1,37 @@
+{
+  "7291": {
+    "evaluator_response": {
+      "reasoning": "Specifies a side profile and slender build so the model focuses on the elongated snout and pointed ears within a clear scene, while staying short and scene-oriented.",
+      "solution": "a photo of a slender whippet standing in profile in a grassy field"
+    },
+    "cei": 35.31927987933159
+  },
+  "11513": {
+    "evaluator_response": {
+      "reasoning": "Highlights slender build, running pose, and small solid spots in a sunlit grassy plain to counter confusion with leopard rosettes.",
+      "solution": "a photo of slender cheetah running across sunlit grassy plain with small black spots"
+    },
+    "cei": 55.901092290878296
+  },
+  "11533": {
+    "evaluator_response": {
+      "reasoning": "Emphasizes the cheetah's slim build and sprinting posture in a grassy scene to highlight its characteristic silhouette and motion, reducing confusion with a stockier leopard.",
+      "solution": "a photo of a slim cheetah sprinting across a grassy plain"
+    },
+    "cei": 22.055277228355408
+  },
+  "4351": {
+    "evaluator_response": {
+      "reasoning": "Specifies a common white goose in a natural pond scene so CLIP prioritizes a real, natural context over stylized colorful backgrounds.",
+      "solution": "a photo of a white goose standing on a natural pond"
+    },
+    "cei": 37.99482136964798
+  },
+  "8434": {
+    "evaluator_response": {
+      "reasoning": "Adds an overall scene and pose\u2014'standing in a grassy field' with 'alert'\u2014to counter a misleading close-up angle and emphasize whole-animal Border Collie cues.",
+      "solution": "a photo of alert border_collie standing in a grassy field"
+    },
+    "cei": 13.620173931121826
+  }
+}
