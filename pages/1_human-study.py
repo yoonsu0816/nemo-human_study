@@ -123,7 +123,7 @@ if image_path:
         st.markdown(f"### Error Information")
         st.markdown(f"**True Class:** {true_cls_name}")
         st.markdown(f"**Predicted Class:** {prediction_cls_name}")
-        st.markdown(f"**Error:** {true_cls_name} is misclassified as {prediction_cls_name}.")
+        st.markdown(f"#### '{true_cls_name}' is misclassified as '{prediction_cls_name}'.")
     
     st.markdown("---")
     
@@ -264,10 +264,11 @@ if image_path:
                 st.session_state.ranking_feedback[feedback_key] = ""
             
             feedback_text = st.text_area(
-                "What makes this explanation good or bad?",
+                "Which part of this explanation makes it good?",
                 value=st.session_state.ranking_feedback[feedback_key],
                 key=f"feedback_{selected_key}_{idx}",
-                help="Describe what aspects of this explanation are good or bad, and why you ranked it this way.",
+                help="Describe which part of this explanation makes it good or bad, and why you ranked it this way.",
+                placeholder="'part': 'reason'",
                 height=150
             )
             st.session_state.ranking_feedback[feedback_key] = feedback_text
