@@ -1,0 +1,456 @@
+participant_id,sample_key,timestamp,true_class,predicted_class,method,rank,feedback,cei_score,explanation_order
+taesoo,7291,2025-12-05 05:36:30.282,whippet,italian_greyhound,retrieval,4,WHOLE: This doesn't really affect the classification of the image.,38.940297812223434,3
+taesoo,7291,2025-12-05 05:36:30.282,whippet,italian_greyhound,pixel,2,"""focusing too much on these commonalities while ignoring the unique facial and body proportions of a whippet"": Provides more information about why the model might have been confused but the explanation lacks detail.",31.810470670461655,0
+taesoo,7291,2025-12-05 05:36:30.282,whippet,italian_greyhound,change,3,"""due to the lack of these details in the first image"": The image doesn't lack these details.",35.31927987933159,2
+taesoo,7291,2025-12-05 05:36:30.282,whippet,italian_greyhound,scitx,1,"""Set A shows a whippet with a long tail and slender legs, which can be easily confused with the more elongated body shape and pointed ears characteristic of the Italian Greyhound"": Provides more specific information about the similarities and differences about the breeds, but I can't really tell these differences from the image and the actual dog breeds.",41.590892523527145,1
+hyehyun,7291,2025-12-05 05:37:38.235,whippet,italian_greyhound,retrieval,3,Harsh shadows create false edges on the object.: clear reason. focused on reason,38.940297812223434,1
+hyehyun,7291,2025-12-05 05:37:38.235,whippet,italian_greyhound,pixel,4,"focusing too much on these commonalities : This expression didn't give me any idea. I also expected information about difference between two.
+ ignoring the unique facial and body proportions of a whippet.: what difference?",31.810470670461655,3
+hyehyun,7291,2025-12-05 05:37:38.235,whippet,italian_greyhound,change,2,"elongated snout and pointed ears, which are key identifying features of a whippet: I can know the difference
+due to the lack of these details in the first image.: Can also understand the reason with model",35.31927987933159,2
+hyehyun,7291,2025-12-05 05:37:38.235,whippet,italian_greyhound,scitx,1,"Greyhound due to the slender build and pointed ears, which are common features shared by both breeds.  : I like this detail",41.590892523527145,0
+jaesang,7291,2025-12-05 05:38:17.252,whippet,italian_greyhound,retrieval,4,shadows: can't be a different trait of species.,38.940297812223434,1
+jaesang,7291,2025-12-05 05:38:17.252,whippet,italian_greyhound,pixel,2,"The model may have been misled by the similarity in body structure and tail shape between the two breeds: explaining why it missclassified
+
+ignoring the unique facial and body: not clear",31.810470670461655,2
+jaesang,7291,2025-12-05 05:38:17.252,whippet,italian_greyhound,change,1,elongated snout and pointed ears: clear difference,35.31927987933159,0
+jaesang,7291,2025-12-05 05:38:17.252,whippet,italian_greyhound,scitx,3,no clear reason that sets apart between two species.,41.590892523527145,3
+Gosu,7291,2025-12-05 05:38:17.773,whippet,italian_greyhound,retrieval,4,"It can explain why it says wrong answer, but cannot explain why it says 'greyhound', which is very important information to fix this model.",38.940297812223434,2
+Gosu,7291,2025-12-05 05:38:17.773,whippet,italian_greyhound,pixel,2,It is more concisely explaining the difference.,31.810470670461655,3
+Gosu,7291,2025-12-05 05:38:17.773,whippet,italian_greyhound,change,1,It is also mentioning the problem on the picture itself not only the similarity.,35.31927987933159,0
+Gosu,7291,2025-12-05 05:38:17.773,whippet,italian_greyhound,scitx,3,"It is longer than fourth explanation, so I ranked it as third place.",41.590892523527145,1
+Sehoon,7291,2025-12-05 05:38:17.357,whippet,italian_greyhound,retrieval,4,I'm not sure if it is the right reason and also if knowing it helps me to identify the correct answer. Also it is too short.,38.940297812223434,3
+Sehoon,7291,2025-12-05 05:38:17.357,whippet,italian_greyhound,pixel,3,There are a lot of breeds having similar body and tail. This explanation doesn't help us to find the correct answer,31.810470670461655,1
+Sehoon,7291,2025-12-05 05:38:17.357,whippet,italian_greyhound,change,2,It has the specific traits that model had to capture.,35.31927987933159,0
+Sehoon,7291,2025-12-05 05:38:17.357,whippet,italian_greyhound,scitx,1,It has the specific traits that model had to capture and the reason of confusion at the same time.,41.590892523527145,2
+Eunhye,7291,2025-12-05 05:39:54.308,whippet,italian_greyhound,retrieval,4,This difference probably would not have caused the error in classification. ,38.940297812223434,0
+Eunhye,7291,2025-12-05 05:39:54.308,whippet,italian_greyhound,pixel,2,,31.810470670461655,1
+Eunhye,7291,2025-12-05 05:39:54.308,whippet,italian_greyhound,change,3,,35.31927987933159,3
+Eunhye,7291,2025-12-05 05:39:54.308,whippet,italian_greyhound,scitx,1,Explains more about what the features of an actual italian greyhound would have ,41.590892523527145,2
+sean,7291,2025-12-05 05:38:51.866,whippet,italian_greyhound,retrieval,4,Not helpful.,38.940297812223434,2
+sean,7291,2025-12-05 05:38:51.866,whippet,italian_greyhound,pixel,3,"Comparison is good, but a but vague.",31.810470670461655,0
+sean,7291,2025-12-05 05:38:51.866,whippet,italian_greyhound,change,2,"Similar to 1st, but not really in detail.",35.31927987933159,3
+sean,7291,2025-12-05 05:38:51.866,whippet,italian_greyhound,scitx,1,"Specific points in the body, comparison between the two species.",41.590892523527145,1
+Seungju,7291,2025-12-05 05:38:53.857,whippet,italian_greyhound,retrieval,4,,38.940297812223434,2
+Seungju,7291,2025-12-05 05:38:53.857,whippet,italian_greyhound,pixel,3,,31.810470670461655,3
+Seungju,7291,2025-12-05 05:38:53.857,whippet,italian_greyhound,change,1,,35.31927987933159,0
+Seungju,7291,2025-12-05 05:38:53.857,whippet,italian_greyhound,scitx,2,,41.590892523527145,1
+Saelyne,7291,2025-12-05 05:39:08.715,whippet,italian_greyhound,retrieval,4,"""Harsh Shadows"": shadows exist in any object, not specific to this one.",38.940297812223434,0
+Saelyne,7291,2025-12-05 05:39:08.715,whippet,italian_greyhound,pixel,2,,31.810470670461655,3
+Saelyne,7291,2025-12-05 05:39:08.715,whippet,italian_greyhound,change,3,,35.31927987933159,2
+Saelyne,7291,2025-12-05 05:39:08.715,whippet,italian_greyhound,scitx,1,"""due to the slender build and pointed ears, which are common features shared by both breeds."": I liked the unique features shared by both breeds",41.590892523527145,1
+Minbeom,7291,2025-12-05 05:39:22.528,whippet,italian_greyhound,retrieval,4,too short,38.940297812223434,3
+Minbeom,7291,2025-12-05 05:39:22.528,whippet,italian_greyhound,pixel,2,,31.810470670461655,2
+Minbeom,7291,2025-12-05 05:39:22.528,whippet,italian_greyhound,change,3,,35.31927987933159,1
+Minbeom,7291,2025-12-05 05:39:22.528,whippet,italian_greyhound,scitx,1," a whippet with a long tail and slender legs, which can be easily confused with the more elongated body shape and pointed ears characteristic of the Italian Greyhound.
+
+focus on difference",41.590892523527145,0
+Jiho Kim,7291,2025-12-05 05:39:23.199,whippet,italian_greyhound,retrieval,4,"Harsh shadows create false edges on the object.
+
+-> limited explanations in element level",38.940297812223434,3
+Jiho Kim,7291,2025-12-05 05:39:23.199,whippet,italian_greyhound,pixel,1,"The model may have been misled by the similarity in body structure and tail shape between the two breeds, focusing too much on these commonalities while ignoring the unique facial and body proportions of a whippet.
+
+-> suggests more clues than other explanations",31.810470670461655,2
+Jiho Kim,7291,2025-12-05 05:39:23.199,whippet,italian_greyhound,change,3,"The model likely failed to recognize the elongated snout and pointed ears, which are key identifying features of a whippet, due to the lack of these details in the first image.
+
+-> there is no wrong points in the explanation",35.31927987933159,0
+Jiho Kim,7291,2025-12-05 05:39:23.199,whippet,italian_greyhound,scitx,2,"The model likely misclassified the image as an Italian Greyhound due to the slender build and pointed ears, which are common features shared by both breeds. The drawing in Set A shows a whippet with a long tail and slender legs, which can be easily confused with the more elongated body shape and pointed ears characteristic of the Italian Greyhound.
+
+-> there is no wrong points written and also explanation is detailed",41.590892523527145,1
+Shujun,7291,2025-12-05 05:40:14.987,whippet,italian_greyhound,retrieval,4,There is not much shadow,38.940297812223434,0
+Shujun,7291,2025-12-05 05:40:14.987,whippet,italian_greyhound,pixel,1,They are truly very common in these body parts,31.810470670461655,2
+Shujun,7291,2025-12-05 05:40:14.987,whippet,italian_greyhound,change,3,The ear and snout are clear in this pic,35.31927987933159,3
+Shujun,7291,2025-12-05 05:40:14.987,whippet,italian_greyhound,scitx,2,They are truly very common in these body parts,41.590892523527145,1
+daeun,7291,2025-12-05 05:40:17.123,whippet,italian_greyhound,retrieval,4,False information,38.940297812223434,0
+daeun,7291,2025-12-05 05:40:17.123,whippet,italian_greyhound,pixel,3,They don't explain what is those unique facial and body proportions of a whippet,31.810470670461655,1
+daeun,7291,2025-12-05 05:40:17.123,whippet,italian_greyhound,change,2,,35.31927987933159,3
+daeun,7291,2025-12-05 05:40:17.123,whippet,italian_greyhound,scitx,1,Detailed explanation,41.590892523527145,2
+minju,7291,2025-12-05 05:49:49.819,whippet,italian_greyhound,retrieval,4," false edges: i'm not sure why it is 'false', lack of explanation",38.940297812223434,0
+minju,7291,2025-12-05 05:49:49.819,whippet,italian_greyhound,pixel,2,focusing too much on these commonalities : like it -- I can guess the reason for error,31.810470670461655,2
+minju,7291,2025-12-05 05:49:49.819,whippet,italian_greyhound,change,3,which are key identifying features of a whippet: ,35.31927987933159,1
+minju,7291,2025-12-05 05:49:49.819,whippet,italian_greyhound,scitx,1,"due to the slender build and pointed ears, which are common features shared by both breeds: like it -- more specific part and reason for error.
+the more elongated body shape and pointed ears characteristic of the Italian Greyhound",41.590892523527145,3
+junho,7291,2025-12-05 05:40:25.044,whippet,italian_greyhound,retrieval,4,,38.940297812223434,0
+junho,7291,2025-12-05 05:40:25.044,whippet,italian_greyhound,pixel,3,,31.810470670461655,1
+junho,7291,2025-12-05 05:40:25.044,whippet,italian_greyhound,change,2,,35.31927987933159,2
+junho,7291,2025-12-05 05:40:25.044,whippet,italian_greyhound,scitx,1,,41.590892523527145,3
+Daeheon Jeong,7291,2025-12-05 05:40:32.209,whippet,italian_greyhound,retrieval,4,Harsh shadows: unrelated information,38.940297812223434,1
+Daeheon Jeong,7291,2025-12-05 05:40:32.209,whippet,italian_greyhound,pixel,3,ignoring the unique facial and body proportions: no specific description on how the shape is unique,31.810470670461655,2
+Daeheon Jeong,7291,2025-12-05 05:40:32.209,whippet,italian_greyhound,change,1,elongated snout and pointed ears: a very specific explanation of the appearance,35.31927987933159,3
+Daeheon Jeong,7291,2025-12-05 05:40:32.209,whippet,italian_greyhound,scitx,2,"slender build and pointed ears, which are common features shared by both breeds: unnecessary information.",41.590892523527145,0
+taesoo,11513,2025-12-05 05:40:46.458,cheetah,leopard,retrieval,4,WHOLE: Provides no explanation.,69.81030702590942,0
+taesoo,11513,2025-12-05 05:40:46.458,cheetah,leopard,pixel,2,"""ignoring the broader body shape and distinctive spotted pattern."": Provides good explanation of what made the model confused but also what it missed.",16.558143496513367,2
+taesoo,11513,2025-12-05 05:40:46.458,cheetah,leopard,change,3,"""overall coloration and the presence of rosettes, which are common characteristics of leopards"": Focuses only on why the model might have been confused without explaining what it should have done instead.",55.901092290878296,3
+taesoo,11513,2025-12-05 05:40:46.458,cheetah,leopard,scitx,1,""" The model might have been misled by the rich, detailed texture and contrast in the painting, leading it to predict 'leopard' despite the overall shape and posture being more consistent with a cheetah"": Provides rich explanation of why the model was confused and also very detailed explanation of what the model missed or what should be improved.",44.517982006073,1
+hyehyun,11513,2025-12-05 05:40:51.133,cheetah,leopard,retrieval,4,Image is an oil painting with heavy brush strokes.: so...what..? no help!,69.81030702590942,0
+hyehyun,11513,2025-12-05 05:40:51.133,cheetah,leopard,pixel,2,"The model may have been misled by the specific details of the head and body, focusing too narrowly on these areas while ignoring the broader body shape and distinctive spotted pattern.: Doesn't give the information about leopard of cheetah, but can know the reason why model missed the answer.",16.558143496513367,1
+hyehyun,11513,2025-12-05 05:40:51.133,cheetah,leopard,change,3,"coloration and the presence of rosettes, which are common characteristics of leopards:  I can know the information about leopards
+which are common characteristics of leopards, leading it to incorrectly classify the animal as a leopard.: but this part don't give any information",55.901092290878296,2
+hyehyun,11513,2025-12-05 05:40:51.133,cheetah,leopard,scitx,1," distinct spotted coat pattern of the animal in the painting. The detailed depiction of the leopard's coat, with its characteristic black spots on a light yellow background, closely resembles that of a cheetah, particularly when compared to the simpler patterns found in Set A: I can know the characteristic of leopard
+The model might have been misled by the rich, detailed texture and contrast in the painting, leading it to predict 'leopard' despite the overall shape and posture being more consistent with a cheetah.: Can also know why",44.517982006073,3
+Saelyne,11513,2025-12-05 05:41:12.039,cheetah,leopard,retrieval,4,oil painting with heavy brush strokes.: do not explain about the misclassification reason,69.81030702590942,1
+Saelyne,11513,2025-12-05 05:41:12.039,cheetah,leopard,pixel,3,,16.558143496513367,0
+Saelyne,11513,2025-12-05 05:41:12.039,cheetah,leopard,change,2,,55.901092290878296,2
+Saelyne,11513,2025-12-05 05:41:12.039,cheetah,leopard,scitx,1,"with its characteristic black spots on a light yellow background, closely resembles that of a cheetah: explains why the model misunderstood",44.517982006073,3
+eunyoung,7291,2025-12-05 05:41:26.348,whippet,italian_greyhound,retrieval,4,does not explain why that false edge matters,38.940297812223434,2
+eunyoung,7291,2025-12-05 05:41:26.348,whippet,italian_greyhound,pixel,3,does not explain the shared/different traits between whippet and greyhound,31.810470670461655,1
+eunyoung,7291,2025-12-05 05:41:26.348,whippet,italian_greyhound,change,1,"short, include what makes the different",35.31927987933159,0
+eunyoung,7291,2025-12-05 05:41:26.348,whippet,italian_greyhound,scitx,2,little verbose! ,41.590892523527145,3
+yoonseo,7291,2025-12-05 05:41:27.695,whippet,italian_greyhound,retrieval,4, false edges: the edges of image don't matter at all ,38.940297812223434,3
+yoonseo,7291,2025-12-05 05:41:27.695,whippet,italian_greyhound,pixel,3,body structure and tail shape between the two breeds: how they are similar is not shown,31.810470670461655,1
+yoonseo,7291,2025-12-05 05:41:27.695,whippet,italian_greyhound,change,2,,35.31927987933159,2
+yoonseo,7291,2025-12-05 05:41:27.695,whippet,italian_greyhound,scitx,1,"which are common features shared by both breeds : the reason behind misclassification (commonality)
+pointed ears characteristic of the Italian Greyhound : the reason why it is not italian greyhound",41.590892523527145,0
+Eunhye,11513,2025-12-05 05:41:47.408,cheetah,leopard,retrieval,4,This does not make the difference in a cheetah and leapord ,69.81030702590942,0
+Eunhye,11513,2025-12-05 05:41:47.408,cheetah,leopard,pixel,3,,16.558143496513367,3
+Eunhye,11513,2025-12-05 05:41:47.408,cheetah,leopard,change,2,,55.901092290878296,2
+Eunhye,11513,2025-12-05 05:41:47.408,cheetah,leopard,scitx,1,"Gives explanation on how the two are different, so it's easier to map what details make the classification difference",44.517982006073,1
+Eunhye,11533,2025-12-05 05:41:59.602,cheetah,leopard,retrieval,4,,52.34211981296539,2
+Eunhye,11533,2025-12-05 05:41:59.602,cheetah,leopard,pixel,2,,38.82398307323456,0
+Eunhye,11533,2025-12-05 05:41:59.602,cheetah,leopard,change,3,,22.055277228355408,3
+Eunhye,11533,2025-12-05 05:41:59.602,cheetah,leopard,scitx,1,,29.404976963996887,1
+taesoo,11533,2025-12-05 05:42:22.490,cheetah,leopard,retrieval,4,WHOLE: This is not true.,52.34211981296539,1
+taesoo,11533,2025-12-05 05:42:22.490,cheetah,leopard,pixel,2,"""failed to recognize the cheetah's unique physical characteristics such as its long legs"": Explains why the model was confused but also what it missed.",38.82398307323456,2
+taesoo,11533,2025-12-05 05:42:22.490,cheetah,leopard,change,3,"""coloration and posture of the animal in the first image"": Provides explanation of why the model was confused only.",22.055277228355408,0
+taesoo,11533,2025-12-05 05:42:22.490,cheetah,leopard,scitx,1,"""than the more slender and streamlined form typical of cheetahs"": Provides rich information of why the model is confused but also what it missed.",29.404976963996887,3
+daeun,11513,2025-12-05 05:42:24.646,cheetah,leopard,retrieval,4,"It's just describing the image, not the reason for confusing the model",69.81030702590942,2
+daeun,11513,2025-12-05 05:42:24.646,cheetah,leopard,pixel,3,Too vague,16.558143496513367,3
+daeun,11513,2025-12-05 05:42:24.646,cheetah,leopard,change,1,,55.901092290878296,0
+daeun,11513,2025-12-05 05:42:24.646,cheetah,leopard,scitx,2,Too long,44.517982006073,1
+sean,11513,2025-12-05 05:42:25.599,cheetah,leopard,retrieval,4,Too vague explanation.,69.81030702590942,3
+sean,11513,2025-12-05 05:42:25.599,cheetah,leopard,pixel,3,"A bit general. (""head and body"")",16.558143496513367,1
+sean,11513,2025-12-05 05:42:25.599,cheetah,leopard,change,2,I like that it explained the common characteristics that leopards should have.,55.901092290878296,0
+sean,11513,2025-12-05 05:42:25.599,cheetah,leopard,scitx,1,Very detail ,44.517982006073,2
+Jenny,7291,2025-12-05 05:42:34.110,whippet,italian_greyhound,retrieval,1,"- false edges on the object: that's just the image style, feels irrelevant ",38.940297812223434,2
+Jenny,7291,2025-12-05 05:42:34.110,whippet,italian_greyhound,pixel,3,"- misled by the similarity in body structure and tail shape between the two breeds:  sounds right
+",31.810470670461655,1
+Jenny,7291,2025-12-05 05:42:34.110,whippet,italian_greyhound,change,2,- recognize the elongated snout and pointed ears: it actually identify the distinct features that is not showing in the image ,35.31927987933159,0
+Jenny,7291,2025-12-05 05:42:34.110,whippet,italian_greyhound,scitx,4,"- due to the slender build and pointed ears, which are common features shared by both breeds: i like how they included explicit reason of misclassification.
+- The drawing in Set : it recognized this is in drawing style which contribution the unclearness of the features.",41.590892523527145,3
+Heechan,7291,2025-12-05 05:42:37.216,whippet,italian_greyhound,retrieval,3,Harsh shadows: Bad because shadow might not be a reason to classify the difference of them.,38.940297812223434,0
+Heechan,7291,2025-12-05 05:42:37.216,whippet,italian_greyhound,pixel,2,while ignoring the unique facial and body proportions of a whippet: Good because it suggest the possible reason but it seems common trait of both,31.810470670461655,2
+Heechan,7291,2025-12-05 05:42:37.216,whippet,italian_greyhound,change,1,due to the lack of these details in the first image: Good because it depicts the highly likely reason.,35.31927987933159,1
+Heechan,7291,2025-12-05 05:42:37.216,whippet,italian_greyhound,scitx,4,"The drawing in Set A shows a whippet with a long tail and slender legs, which can be easily confused with the more elongated body shape and pointed ears characteristic of the Italian Greyhound: Bad because it doesn't give any clue for correct answer.",41.590892523527145,3
+Gosu,11513,2025-12-05 05:43:19.429,cheetah,leopard,retrieval,4,"""So what?"" It is not explaining why so the model is wrong and even the depth and width of explanation itself is too lacking.",69.81030702590942,3
+Gosu,11513,2025-12-05 05:43:19.429,cheetah,leopard,pixel,1,It is explaining with well-known common knowledge on the difference of them. So I could understand it better.,16.558143496513367,2
+Gosu,11513,2025-12-05 05:43:19.429,cheetah,leopard,change,2,It is not specifically explaining about the different coloration and it requires more investigation.,55.901092290878296,1
+Gosu,11513,2025-12-05 05:43:19.429,cheetah,leopard,scitx,3,Not much more informative than other explanations but it is too long. So I ranked it as third place.,44.517982006073,0
+Saelyne,11533,2025-12-05 05:43:20.336,cheetah,leopard,retrieval,4,An adversarial patch is placed in the frame to fool the AI.: not explaining the misclassification reason,52.34211981296539,1
+Saelyne,11533,2025-12-05 05:43:20.336,cheetah,leopard,pixel,1, failed to recognize the cheetah's unique physical characteristics such as its long legs.: explains the unique characteristic of the true class,38.82398307323456,0
+Saelyne,11533,2025-12-05 05:43:20.336,cheetah,leopard,change,3,,22.055277228355408,2
+Saelyne,11533,2025-12-05 05:43:20.336,cheetah,leopard,scitx,2,,29.404976963996887,3
+Daeheon Jeong,11513,2025-12-05 05:43:26.051,cheetah,leopard,retrieval,4,heavy brushstrokes: unrelated information,69.81030702590942,0
+Daeheon Jeong,11513,2025-12-05 05:43:26.051,cheetah,leopard,pixel,3,specific details of the head and body: no description of what the detail is.,16.558143496513367,3
+Daeheon Jeong,11513,2025-12-05 05:43:26.051,cheetah,leopard,change,2,"overall coloration and the presence of rosettes: detailed, precise visual description.",55.901092290878296,1
+Daeheon Jeong,11513,2025-12-05 05:43:26.051,cheetah,leopard,scitx,1,"leopard's coat, with its characteristic black spots on a light yellow background, closely resembles that of a cheetah, particularly when compared to the simpler patterns found in Set A: a critical description of how the model could have misinterpreted the image.",44.517982006073,2
+hyunwoo,7291,2025-12-05 05:43:58.862,whippet,italian_greyhound,retrieval,4,Harsh shadows create false edges on the object: the mentioned features are not relevant to the image,38.940297812223434,0
+hyunwoo,7291,2025-12-05 05:43:58.862,whippet,italian_greyhound,pixel,3,"imilarity in body structure and tail shape between the two breeds: this part helps why the model got confused
+ignoring the unique facial and body proportions of a whippet.: too abstract to understand why the model made error",31.810470670461655,1
+hyunwoo,7291,2025-12-05 05:43:58.862,whippet,italian_greyhound,change,2,"elongated snout and pointed ears, which are key identifying features of a whippet: I like it discerned the specific feature of whippet that the model should discover. However without the explanation on the commonalities it'd be hard to judge the importance of these features.",35.31927987933159,3
+hyunwoo,7291,2025-12-05 05:43:58.862,whippet,italian_greyhound,scitx,1,"common features shared by both breeds: this part helps why the model got confused
+more elongated body shape and pointed ears characteristic: provides the specific features of the image that the model may made errors
+",41.590892523527145,2
+Minbeom,11513,2025-12-05 05:44:04.894,cheetah,leopard,retrieval,4,no reason about the difference,69.81030702590942,1
+Minbeom,11513,2025-12-05 05:44:04.894,cheetah,leopard,pixel,2,,16.558143496513367,2
+Minbeom,11513,2025-12-05 05:44:04.894,cheetah,leopard,change,3,"common characteristics of leopards, leading it to incorrectly classify the animal as a leopard.
+
+",55.901092290878296,3
+Minbeom,11513,2025-12-05 05:44:04.894,cheetah,leopard,scitx,1,,44.517982006073,0
+Sehoon,11513,2025-12-05 05:44:18.898,cheetah,leopard,retrieval,4,It seems like a mere explanation of the image (it is even bad as an explanation) rather than the reason of the confusion.,69.81030702590942,3
+Sehoon,11513,2025-12-05 05:44:18.898,cheetah,leopard,pixel,2,"It is kind of similar to explanation 2, but is more dense. However, I'm not sure whether ""broader body shape and distinctive spotted pattern."" is true.",16.558143496513367,2
+Sehoon,11513,2025-12-05 05:44:18.898,cheetah,leopard,change,3,"I think ""leading it to incorrectly classify the animal as a leopard."" this kind of part is not needed, just increasing the cognitive load",55.901092290878296,1
+Sehoon,11513,2025-12-05 05:44:18.898,cheetah,leopard,scitx,1,"It has detailed explanation of the reason (more than saying just ""rosettes"")",44.517982006073,0
+Eunhye,4351,2025-12-05 05:44:27.624,goose,black_swan,retrieval,4,,19.704584777355194,0
+Eunhye,4351,2025-12-05 05:44:27.624,goose,black_swan,pixel,3,,42.6006481051445,1
+Eunhye,4351,2025-12-05 05:44:27.624,goose,black_swan,change,2,,37.99482136964798,2
+Eunhye,4351,2025-12-05 05:44:27.624,goose,black_swan,scitx,1,"Explains the similarity and differences between the answer and prediction, so it explains the exact difference that might have caused the evaluation error",39.34650272130966,3
+taesoo,4351,2025-12-05 05:44:44.956,goose,black_swan,retrieval,4,WHOLE: Hallucination.,19.704584777355194,1
+taesoo,4351,2025-12-05 05:44:44.956,goose,black_swan,pixel,1,"""while ignoring the body and tail feathers that are more specific to geese."": Hallucination but more detailed information about what the model missed.",42.6006481051445,2
+taesoo,4351,2025-12-05 05:44:44.956,goose,black_swan,change,2,"""vibrant, glowing elements often associated with digital art or fantasy themes."": detailed explanation but is incorrect.",37.99482136964798,0
+taesoo,4351,2025-12-05 05:44:44.956,goose,black_swan,scitx,3,"""The intricate feather patterns and the overall graceful form of both birds contribute to this confusion."": Hallucination but no information about what the model missed (only why it was confused)",39.34650272130966,3
+Minbeom,11533,2025-12-05 05:44:51.019,cheetah,leopard,retrieval,4,,52.34211981296539,0
+Minbeom,11533,2025-12-05 05:44:51.019,cheetah,leopard,pixel,2,,38.82398307323456,3
+Minbeom,11533,2025-12-05 05:44:51.019,cheetah,leopard,change,3,,22.055277228355408,1
+Minbeom,11533,2025-12-05 05:44:51.019,cheetah,leopard,scitx,1,,29.404976963996887,2
+eunyoung,11513,2025-12-05 05:44:53.181,cheetah,leopard,retrieval,4,irrelevant,69.81030702590942,2
+eunyoung,11513,2025-12-05 05:44:53.181,cheetah,leopard,pixel,1,Concise but still got the point,16.558143496513367,1
+eunyoung,11513,2025-12-05 05:44:53.181,cheetah,leopard,change,2,,55.901092290878296,3
+eunyoung,11513,2025-12-05 05:44:53.181,cheetah,leopard,scitx,3,verbose,44.517982006073,0
+hyehyun,11533,2025-12-05 05:45:11.239,cheetah,leopard,retrieval,4,An adversarial patch is placed in the frame to fool the AI.: Can't agree..? and don't give that much information,52.34211981296539,2
+hyehyun,11533,2025-12-05 05:45:11.239,cheetah,leopard,pixel,1,but failed to recognize the cheetah's unique physical characteristics such as its long legs.: easy and clear to understand the reason why. also can use as way to improve model,38.82398307323456,0
+hyehyun,11533,2025-12-05 05:45:11.239,cheetah,leopard,change,3,coloration and posture of the animal in the first image: not sure what this mean.. want more clarification.,22.055277228355408,3
+hyehyun,11533,2025-12-05 05:45:11.239,cheetah,leopard,scitx,2,"The detailed depiction of the spots, which are characteristic of leopards, overshadowed the overall shape and posture of the animal, leading to the prediction of 'leopard'. : good detail and easy to understand the reason",29.404976963996887,1
+daeun,11533,2025-12-05 05:45:15.552,cheetah,leopard,retrieval,4,The existence of the frame does not seems to confuse the model,52.34211981296539,0
+daeun,11533,2025-12-05 05:45:15.552,cheetah,leopard,pixel,2,'its long legs' part is vague,38.82398307323456,3
+daeun,11533,2025-12-05 05:45:15.552,cheetah,leopard,change,3,"The posture itself seems not to be the unique characteristic of the leopard, cause other animals could have the same posture too",22.055277228355408,2
+daeun,11533,2025-12-05 05:45:15.552,cheetah,leopard,scitx,1,,29.404976963996887,1
+Hayeon,7291,2025-12-05 05:45:24.600,whippet,italian_greyhound,retrieval,4,shadow is not an important factor for classification,38.940297812223434,1
+Hayeon,7291,2025-12-05 05:45:24.600,whippet,italian_greyhound,pixel,2,which can be easily confused with :  I prefer to getting explanation for potential reason for the reason,31.810470670461655,0
+Hayeon,7291,2025-12-05 05:45:24.600,whippet,italian_greyhound,change,3,I think the key factor to differentiate two is body shape but it does not mention it,35.31927987933159,2
+Hayeon,7291,2025-12-05 05:45:24.600,whippet,italian_greyhound,scitx,1,"which can be easily confused with : it was nice to explain why it could be confused,
+it is helpful because it explains features of the both. ",41.590892523527145,3
+bekzat,7291,2025-12-05 05:45:30.291,whippet,italian_greyhound,retrieval,4,Edges seem irrelevant in distinguishing IG from whippet.,38.940297812223434,1
+bekzat,7291,2025-12-05 05:45:30.291,whippet,italian_greyhound,pixel,1,"i like that it explains the commonalities and unique features of whippet
+i don't like that this explanation is less actionable.",31.810470670461655,3
+bekzat,7291,2025-12-05 05:45:30.291,whippet,italian_greyhound,change,3,"i like that it points to lack of parts of the image, however, even with that information, these two species are difficult to tell apart.",35.31927987933159,0
+bekzat,7291,2025-12-05 05:45:30.291,whippet,italian_greyhound,scitx,2,"i like that it correctly identifies the common features: pointed ears & slender build. 
+i don't like that it claims that IGs have longer body shape & pointed ears in comparison to whippet, but in fact, whippet is slightly bigger/longer and they both have pointed ears.",41.590892523527145,2
+sean,11533,2025-12-05 05:45:34.067,cheetah,leopard,retrieval,3,"If it's a leopard, it makes sense, but if it's not, it is too insincere explanation.",52.34211981296539,2
+sean,11533,2025-12-05 05:45:34.067,cheetah,leopard,pixel,2,"""cheetah's unique physical characteristics such as its long legs"" --> a bit general.",38.82398307323456,3
+sean,11533,2025-12-05 05:45:34.067,cheetah,leopard,change,4,"Just... too general. It's not an explanation; rather it's just saying that ""they just look similar~""",22.055277228355408,1
+sean,11533,2025-12-05 05:45:34.067,cheetah,leopard,scitx,1,Detail!,29.404976963996887,0
+Saelyne,4351,2025-12-05 05:45:46.661,goose,black_swan,retrieval,4,An adversarial patch is placed in the frame to fool the AI.: no reason provided,19.704584777355194,1
+Saelyne,4351,2025-12-05 05:45:46.661,goose,black_swan,pixel,3,,42.6006481051445,3
+Saelyne,4351,2025-12-05 05:45:46.661,goose,black_swan,change,1,"which resembles the vibrant, glowing elements often associated with digital art or fantasy themes. : explains why it misunderstood as black swan",37.99482136964798,2
+Saelyne,4351,2025-12-05 05:45:46.661,goose,black_swan,scitx,2,,39.34650272130966,0
+jaesang,11513,2025-12-05 05:45:54.446,cheetah,leopard,retrieval,4,"Image is an oil painting with heavy brush strokes.: no difference, just an explanation",69.81030702590942,0
+jaesang,11513,2025-12-05 05:45:54.446,cheetah,leopard,pixel,2,broader body shape and distinctive spotted pattern: high level difference which makes it difficult for the user to understand/learn,16.558143496513367,3
+jaesang,11513,2025-12-05 05:45:54.446,cheetah,leopard,change,1,presence of rosettes: explains clear difference,55.901092290878296,2
+jaesang,11513,2025-12-05 05:45:54.446,cheetah,leopard,scitx,3,"The detailed depiction of the leopard's coat, with its characteristic black spots on a light yellow background, closely resembles that of a cheetah, particularly when compared to the simpler patterns found in Set A.: focuses on why it was easy to misclassified rather why it is wrong.
+",44.517982006073,1
+Seungju,11513,2025-12-05 05:46:01.558,cheetah,leopard,retrieval,4,too short and omited unclear which features they focused on.,69.81030702590942,3
+Seungju,11513,2025-12-05 05:46:01.558,cheetah,leopard,pixel,3,too short and omited unclear which features they focused on.,16.558143496513367,2
+Seungju,11513,2025-12-05 05:46:01.558,cheetah,leopard,change,2,omited unclear which features they focused on.,55.901092290878296,1
+Seungju,11513,2025-12-05 05:46:01.558,cheetah,leopard,scitx,1,,44.517982006073,0
+Jiho Kim,11513,2025-12-05 05:46:54.619,cheetah,leopard,retrieval,4,"Image is an oil painting with heavy brush strokes.
+
+-> doesn't focus on the difference between two classes",69.81030702590942,1
+Jiho Kim,11513,2025-12-05 05:46:54.619,cheetah,leopard,pixel,1,"The model may have been misled by the specific details of the head and body, focusing too narrowly on these areas while ignoring the broader body shape and distinctive spotted pattern.
+
+-> i don't know if this explanation can be truly applied to compare two, but the aspects are most diverse.",16.558143496513367,0
+Jiho Kim,11513,2025-12-05 05:46:54.619,cheetah,leopard,change,3,"The model may have been misled by the overall coloration and the presence of rosettes, which are common characteristics of leopards, leading it to incorrectly classify the animal as a leopard.
+
+-> same explanation with 2nd, but more summarized.",55.901092290878296,2
+Jiho Kim,11513,2025-12-05 05:46:54.619,cheetah,leopard,scitx,2,"The model's misclassification can be attributed to the distinct spotted coat pattern of the animal in the painting. The detailed depiction of the leopard's coat, with its characteristic black spots on a light yellow background, closely resembles that of a cheetah, particularly when compared to the simpler patterns found in Set A. The model might have been misled by the rich, detailed texture and contrast in the painting, leading it to predict 'leopard' despite the overall shape and posture being more consistent with a cheetah.
+
+-> detailed but not every sentence is helpful.",44.517982006073,3
+Shujun,11513,2025-12-05 05:47:12.169,cheetah,leopard,retrieval,3,This picture from painting is not clear in main part,69.81030702590942,0
+Shujun,11513,2025-12-05 05:47:12.169,cheetah,leopard,pixel,2,Maybe,16.558143496513367,3
+Shujun,11513,2025-12-05 05:47:12.169,cheetah,leopard,change,4,,55.901092290878296,1
+Shujun,11513,2025-12-05 05:47:12.169,cheetah,leopard,scitx,1,"good, because the pattern on skin is the key point and very hard to distinguish
+ ",44.517982006073,2
+Sehoon,11533,2025-12-05 05:47:31.479,cheetah,leopard,retrieval,4,"Is it actually the reason? If it is true, it might be stunning... but I don't think so...",52.34211981296539,0
+Sehoon,11533,2025-12-05 05:47:31.479,cheetah,leopard,pixel,2,"It has more details like ""fur pattern and long legs"" than explanation 2, giving hints to correct the answer.",38.82398307323456,3
+Sehoon,11533,2025-12-05 05:47:31.479,cheetah,leopard,change,3,"It's explanation simply says ""coloration and posture"", not indicating so which part we actually focus.",22.055277228355408,1
+Sehoon,11533,2025-12-05 05:47:31.479,cheetah,leopard,scitx,1,It explains the different part and similar part of two classes in detail.,29.404976963996887,2
+minju,11513,2025-12-05 05:49:51.151,cheetah,leopard,retrieval,4,"heavy brush strokes: it doesn't help any classification, it's just description of picture, not the rationale of classification",69.81030702590942,0
+minju,11513,2025-12-05 05:49:51.151,cheetah,leopard,pixel,2,specific details of the head and body: It seems like detail part of error and reason.,16.558143496513367,3
+minju,11513,2025-12-05 05:49:51.151,cheetah,leopard,change,3,overall coloration and the presence of rosettes: common characteristic is helpful to understand the error but kinda vague?,55.901092290878296,2
+minju,11513,2025-12-05 05:49:51.151,cheetah,leopard,scitx,1,"detailed depiction of the leopard's coat, with its characteristic black spots on a light yellow background: super specific, seems helpful
+rich, detailed texture and contrast in the painting: this is also specific part of error, which is helpful",44.517982006073,1
+hyehyun,4351,2025-12-05 05:47:49.086,goose,black_swan,retrieval,4,An adversarial patch is placed in the frame to fool the AI.: no helpful information for me,19.704584777355194,1
+hyehyun,4351,2025-12-05 05:47:49.086,goose,black_swan,pixel,1,"The model's misclassification likely occurred due to its focus on the neck and head, which are shared characteristics with both geese and swans,: Can know the reason I like it!
+ignoring the body and tail feathers that are more specific to geese: Can also imagine how I can revise the model!",42.6006481051445,0
+hyehyun,4351,2025-12-05 05:47:49.086,goose,black_swan,change,3,This could have confused the model into identifying the swan as a fantastical creature rather than a real one: Is there this to do with goose??,37.99482136964798,3
+hyehyun,4351,2025-12-05 05:47:49.086,goose,black_swan,scitx,2,"similarity in the swan's and goose's long necks and elegant posture. & The intricate feather patterns and the overall graceful form of both birds contribute to this confusion.: It explains, but make me think about so what and think so how I can improve model?",39.34650272130966,2
+hyunwoo,11513,2025-12-05 05:49:51.546,cheetah,leopard,retrieval,4,no information to discern why it decided the image depicting a leopard rather than a cheetah,69.81030702590942,1
+hyunwoo,11513,2025-12-05 05:49:51.546,cheetah,leopard,pixel,3,the specific details of the head and body: too abstract to understand why the model erred,16.558143496513367,2
+hyunwoo,11513,2025-12-05 05:49:51.546,cheetah,leopard,change,2,overall coloration and the presence of rosettes: I wish it was a bit more informative,55.901092290878296,3
+hyunwoo,11513,2025-12-05 05:49:51.546,cheetah,leopard,scitx,1,"The detailed depiction of the leopard's coat, with its characteristic black spots on a light yellow background, closely resembles that of a cheetah, particularly when compared to the simpler patterns found in Set A.: I like how it explains why the model was confused. 
+
+The model might have been misled by the rich, detailed texture and contrast in the painting: I don't think it's really relevant about discerning between cheetahs and leopards",44.517982006073,0
+yoonseo,11513,2025-12-05 05:48:22.353,cheetah,leopard,retrieval,4,the style of painting is what? no conclusion,69.81030702590942,3
+yoonseo,11513,2025-12-05 05:48:22.353,cheetah,leopard,pixel,3,"specific details of the head and body : not specific enough to be persuaded
+ignoring the broader body shape and distinctive spotted pattern. : not specific enough to be be persuaded",16.558143496513367,0
+yoonseo,11513,2025-12-05 05:48:22.353,cheetah,leopard,change,2,which are common characteristics of leopards: only proposes the commonalities ,55.901092290878296,1
+yoonseo,11513,2025-12-05 05:48:22.353,cheetah,leopard,scitx,1,most specific but still not good... ,44.517982006073,2
+Gosu,11533,2025-12-05 05:49:49.808,cheetah,leopard,retrieval,3,It provides different perspective compared to other explanations but not rich and exhaustively explaining. p.s. Is it wrong...? Then it should be reconsidered but I think it is still 3rd because it still gives novel information about error.,52.34211981296539,1
+Gosu,11533,2025-12-05 05:49:49.808,cheetah,leopard,pixel,4,There is no full explanation enough.,38.82398307323456,0
+Gosu,11533,2025-12-05 05:49:49.808,cheetah,leopard,change,1,It provides novel perspective (posture) than others and rich enough.,22.055277228355408,3
+Gosu,11533,2025-12-05 05:49:49.808,cheetah,leopard,scitx,2,"It is long but different from previous comparison, it is richer than other explanations here.",29.404976963996887,2
+Heechan,11513,2025-12-05 05:48:33.437,cheetah,leopard,retrieval,4,Image is an oil painting with heavy brush strokes: Bad because this is even not a reason ,69.81030702590942,0
+Heechan,11513,2025-12-05 05:48:33.437,cheetah,leopard,pixel,1,focusing too narrowly on these areas while ignoring the broader body shape and distinctive spotted pattern: Better because it can derive possible aid to solve the problem.,16.558143496513367,2
+Heechan,11513,2025-12-05 05:48:33.437,cheetah,leopard,change,3,which are common characteristics of leopards: Bad because it only says about common confusing point but not a distinctive point.,55.901092290878296,1
+Heechan,11513,2025-12-05 05:48:33.437,cheetah,leopard,scitx,2,detailed texture and contrast in the painting: Image could be problem but can't be a improvement,44.517982006073,3
+Minbeom,4351,2025-12-05 05:55:26.949,goose,black_swan,retrieval,4,"too short, no meaning.",19.704584777355194,1
+Minbeom,4351,2025-12-05 05:55:26.949,goose,black_swan,pixel,2,,42.6006481051445,0
+Minbeom,4351,2025-12-05 05:55:26.949,goose,black_swan,change,1,"have been misled by the stylized, colorful background in the first image, 
+
+convincing reason!",37.99482136964798,2
+Minbeom,4351,2025-12-05 05:55:26.949,goose,black_swan,scitx,3,"intricate feather patterns and the overall graceful form 
+
+I think more description about this is need here.",39.34650272130966,3
+eunyoung,11533,2025-12-05 05:49:01.006,cheetah,leopard,retrieval,2,Hard to undertstand,52.34211981296539,0
+eunyoung,11533,2025-12-05 05:49:01.006,cheetah,leopard,pixel,1,"short, but got the points (commonality, differences) ",38.82398307323456,2
+eunyoung,11533,2025-12-05 05:49:01.006,cheetah,leopard,change,4,"Does not discuss what makes it 'resemble' 
+",22.055277228355408,3
+eunyoung,11533,2025-12-05 05:49:01.006,cheetah,leopard,scitx,3,Too verbose,29.404976963996887,1
+sean,4351,2025-12-05 05:49:03.210,goose,black_swan,retrieval,4,"It's a goose, so not an adversarial patch.",19.704584777355194,1
+sean,4351,2025-12-05 05:49:03.210,goose,black_swan,pixel,1,Explained both similar / Specific (different) things,42.6006481051445,0
+sean,4351,2025-12-05 05:49:03.210,goose,black_swan,change,3,"I don't really sympathize to this reason... I want the comparison between black swan and goose (what is similar, what is different) so that I can understand the reason why the model misunderstood the two species.",37.99482136964798,3
+sean,4351,2025-12-05 05:49:03.210,goose,black_swan,scitx,2,Only similarity.,39.34650272130966,2
+daeun,4351,2025-12-05 05:49:04.107,goose,black_swan,retrieval,4,I don't think the adversarial patch is affecting the model,19.704584777355194,3
+daeun,4351,2025-12-05 05:49:04.107,goose,black_swan,pixel,2,,42.6006481051445,0
+daeun,4351,2025-12-05 05:49:04.107,goose,black_swan,change,3,"Too conceptual issue I guess, it makes sense but less likely",37.99482136964798,2
+daeun,4351,2025-12-05 05:49:04.107,goose,black_swan,scitx,1,,39.34650272130966,1
+Shujun,11533,2025-12-05 05:50:10.200,cheetah,leopard,retrieval,4,I don't see any patches,52.34211981296539,2
+Shujun,11533,2025-12-05 05:50:10.200,cheetah,leopard,pixel,3,this is a painting maybe wrong in body scale,38.82398307323456,0
+Shujun,11533,2025-12-05 05:50:10.200,cheetah,leopard,change,2,,22.055277228355408,3
+Shujun,11533,2025-12-05 05:50:10.200,cheetah,leopard,scitx,1,it is very detailed and frame-related,29.404976963996887,1
+Daeheon Jeong,11533,2025-12-05 05:50:12.021,cheetah,leopard,retrieval,4,adversarial patch is placed in the underdescribed.,52.34211981296539,2
+Daeheon Jeong,11533,2025-12-05 05:50:12.021,cheetah,leopard,pixel,2,detailed fur pattern and overall shape: unclear about how the fur pattern is different. ,38.82398307323456,0
+Daeheon Jeong,11533,2025-12-05 05:50:12.021,cheetah,leopard,change,3,"coloration and posture of the animal in the first image, which closely resembles a leopard's appearance: missing description on how the model is misled.",22.055277228355408,1
+Daeheon Jeong,11533,2025-12-05 05:50:12.021,cheetah,leopard,scitx,1,"The vibrant orange and yellow coloration, combined with the intricate spot patterns: needs an explanation of how the pattern is different.",29.404976963996887,3
+Sehoon,4351,2025-12-05 05:51:13.013,goose,black_swan,retrieval,4,I'm not sure if it is actually the reason.,19.704584777355194,3
+Sehoon,4351,2025-12-05 05:51:13.013,goose,black_swan,pixel,1,"It clearly states where the model should focus on ""the body and tail feathers""",42.6006481051445,1
+Sehoon,4351,2025-12-05 05:51:13.013,goose,black_swan,change,3,"Black swan and geese are actually very distinguishable... ""as a fantastical creature"" feels like an excuse.",37.99482136964798,2
+Sehoon,4351,2025-12-05 05:51:13.013,goose,black_swan,scitx,2,I think there are a few redundant lines.,39.34650272130966,0
+Jiho Kim,11533,2025-12-05 05:51:10.647,cheetah,leopard,retrieval,4,"An adversarial patch is placed in the frame to fool the AI.
+-> what is this model up to?",52.34211981296539,0
+Jiho Kim,11533,2025-12-05 05:51:10.647,cheetah,leopard,pixel,1,"The model may have been misled by the detailed fur pattern and overall shape, which are common to both leopards and cheetahs, but failed to recognize the cheetah's unique physical characteristics such as its long legs.
+
+-> It shows more detailed explanation on physical characteristics.",38.82398307323456,3
+Jiho Kim,11533,2025-12-05 05:51:10.647,cheetah,leopard,change,3,"The model may have been misled by the coloration and posture of the animal in the first image, which closely resembles a leopard's appearance, leading to a misclassification.
+
+-> I don't know anything about cheetah and leopard, but I'm sure that posture is not important to classify those.",22.055277228355408,1
+Jiho Kim,11533,2025-12-05 05:51:10.647,cheetah,leopard,scitx,2,"The model likely misclassified the cheetah as a leopard due to the presence of distinct leopard-like spots in the artwork. The detailed depiction of the spots, which are characteristic of leopards, overshadowed the overall shape and posture of the animal, leading to the prediction of 'leopard'. The vibrant orange and yellow coloration, combined with the intricate spot patterns, align more closely with traditional depictions of leopards than the more slender and streamlined form typical of cheetahs.
+
+->  I don't know anything about cheetah and leopard, but I'm sure that posture is not important to classify those. Just more elaborated version of explanation 2.",29.404976963996887,2
+Jenny,11513,2025-12-05 06:07:15.947,cheetah,leopard,retrieval,4,- too simplified ,69.81030702590942,1
+Jenny,11513,2025-12-05 06:07:15.947,cheetah,leopard,pixel,3,ignoring the broader body shape : this is not visible in the image so unlikely to be the reason.  ,16.558143496513367,2
+Jenny,11513,2025-12-05 06:07:15.947,cheetah,leopard,change,2,"-  verall coloration and the presence of rosettes, which are common characteristics of leopards : it makes sense that the model may have mistaken background pattens as leopard's patterns.",55.901092290878296,3
+Jenny,11513,2025-12-05 06:07:15.947,cheetah,leopard,scitx,1,"-  distinct spotted coat pattern of the animal in the painting:  this part sounds right
+",44.517982006073,0
+jaesang,11533,2025-12-05 05:51:55.837,cheetah,leopard,retrieval,4,adversarial patch: hard to interpret from human,52.34211981296539,2
+jaesang,11533,2025-12-05 05:51:55.837,cheetah,leopard,pixel,2, long legs: image doesn't show full legs,38.82398307323456,1
+jaesang,11533,2025-12-05 05:51:55.837,cheetah,leopard,change,3, coloration and posture of the animal: vague superficial differences,22.055277228355408,0
+jaesang,11533,2025-12-05 05:51:55.837,cheetah,leopard,scitx,1,"due to the presence of distinct leopard-like spots in the artwork: explains the reason why it missclassified.
+
+more slender and streamlined: more differences
+",29.404976963996887,3
+yoonseo,11533,2025-12-05 05:52:29.297,cheetah,leopard,retrieval,4,no human centric explanation,52.34211981296539,0
+yoonseo,11533,2025-12-05 05:52:29.297,cheetah,leopard,pixel,1,,38.82398307323456,1
+yoonseo,11533,2025-12-05 05:52:29.297,cheetah,leopard,change,3,,22.055277228355408,3
+yoonseo,11533,2025-12-05 05:52:29.297,cheetah,leopard,scitx,2,,29.404976963996887,2
+Gosu,4351,2025-12-05 05:52:37.191,goose,black_swan,retrieval,4,It was hard to find useful insight to fix the model.,19.704584777355194,3
+Gosu,4351,2025-12-05 05:52:37.191,goose,black_swan,pixel,3,I can focus on neck and head with this explanation but what specifically?,42.6006481051445,0
+Gosu,4351,2025-12-05 05:52:37.191,goose,black_swan,change,1,'colorful' background that explanation gives me some kind of opportunity about thinking why it is misclassified it into 'black' swan.,37.99482136964798,1
+Gosu,4351,2025-12-05 05:52:37.191,goose,black_swan,scitx,2,"It is richer than first explanation, because it explains why the model was confused.",39.34650272130966,2
+bekzat,11513,2025-12-05 05:52:56.453,cheetah,leopard,retrieval,4,i don't like that it is not an explanation of the error,69.81030702590942,3
+bekzat,11513,2025-12-05 05:52:56.453,cheetah,leopard,pixel,2,i don't like that the explanation is more abstract and less precise compared to others.,16.558143496513367,1
+bekzat,11513,2025-12-05 05:52:56.453,cheetah,leopard,change,1,"i like that it highlights the environment and colors used for depiction.
+i like that it mentions distinct features of leopards
+i don't like that it does not mention missed features of cheetah.",55.901092290878296,0
+bekzat,11513,2025-12-05 05:52:56.453,cheetah,leopard,scitx,3,"i don't like that it misrepresents what is actually depicted.
+i like that it tries to be more concrete",44.517982006073,2
+Daeheon Jeong,4351,2025-12-05 05:52:58.267,goose,black_swan,retrieval,3,adversarial patch is placed: it's difficult to determine whether this is true.,19.704584777355194,0
+Daeheon Jeong,4351,2025-12-05 05:52:58.267,goose,black_swan,pixel,1,"due to its focus on the neck and head: most likely explanation, suggesting how and why the error occurred.",42.6006481051445,3
+Daeheon Jeong,4351,2025-12-05 05:52:58.267,goose,black_swan,change,2,"by the stylized, colorful background in the first image, which resembles the vibrant: assumptive, which is not a good explanation.",37.99482136964798,2
+Daeheon Jeong,4351,2025-12-05 05:52:58.267,goose,black_swan,scitx,4,The black swan in Set B shares these features with the goose in Set A: seems like hallucination,39.34650272130966,1
+eunyoung,4351,2025-12-05 05:53:08.200,goose,black_swan,retrieval,2,,19.704584777355194,1
+eunyoung,4351,2025-12-05 05:53:08.200,goose,black_swan,pixel,4,,42.6006481051445,3
+eunyoung,4351,2025-12-05 05:53:08.200,goose,black_swan,change,1,I don't think that is a reason. ,37.99482136964798,0
+eunyoung,4351,2025-12-05 05:53:08.200,goose,black_swan,scitx,3,,39.34650272130966,2
+Hayeon,11513,2025-12-05 05:53:12.009,cheetah,leopard,retrieval,4,it does not focus on classification but the style. ,69.81030702590942,0
+Hayeon,11513,2025-12-05 05:53:12.009,cheetah,leopard,pixel,3,"focusing too narrowly on these areas while ignoring the broader body shape and distinctive spotted pattern : I'm not sure even though it didn't ignored the body shape, it would not be able to distinguish anyway. ",16.558143496513367,3
+Hayeon,11513,2025-12-05 05:53:12.009,cheetah,leopard,change,2,presence of rosettes : it is not an enough reason to misclassify because it is a common feature. I'm curious about the reason why it misclassified to leopard .,55.901092290878296,1
+Hayeon,11513,2025-12-05 05:53:12.009,cheetah,leopard,scitx,1,when compared to the simpler patterns found : it's nice to point out the key factor. ,44.517982006073,2
+Heechan,11533,2025-12-05 05:53:31.505,cheetah,leopard,retrieval,4,An adversarial patch is placed in the frame to fool the AI.: Bad because I don't know what is it saying.,52.34211981296539,3
+Heechan,11533,2025-12-05 05:53:31.505,cheetah,leopard,pixel,1,failed to recognize the cheetah's unique physical characteristics such as its long legs: Good because it shows clear reason to discriminate them.,38.82398307323456,2
+Heechan,11533,2025-12-05 05:53:31.505,cheetah,leopard,change,3,coloration and posture of the animal: Bad because this can't be the improvement,22.055277228355408,1
+Heechan,11533,2025-12-05 05:53:31.505,cheetah,leopard,scitx,2,"The vibrant orange and yellow coloration, combined with the intricate spot patterns, align more closely with traditional depictions of leopards than the more slender and streamlined form typical of cheetahs: Good because it shows the difference of two points",29.404976963996887,0
+hyunwoo,11533,2025-12-05 05:53:33.453,cheetah,leopard,retrieval,4,An adversarial patch: I can't locate where the adversarial patch is ,52.34211981296539,0
+hyunwoo,11533,2025-12-05 05:53:33.453,cheetah,leopard,pixel,3,but failed to recognize the cheetah's unique physical characteristics such as its long legs.: too abstract to tell the difference,38.82398307323456,2
+hyunwoo,11533,2025-12-05 05:53:33.453,cheetah,leopard,change,2,"the coloration and posture of the animal in the first image, which closely resembles a leopard's appearance: I wish it was more detailed",22.055277228355408,1
+hyunwoo,11533,2025-12-05 05:53:33.453,cheetah,leopard,scitx,1,"The detailed depiction of the spots, which are characteristic of leopards: I like how it explains why the model erred
+overall shape and posture of the animal, leading to the prediction of 'leopard'.: too abstract; I wish it explained the shape and postures of cheetahs and leopards
+
+align more closely with traditional depictions of leopards than the more slender and streamlined form typical of cheetahs.: not sure this is true or not",29.404976963996887,3
+jaesang,4351,2025-12-05 05:53:56.509,goose,black_swan,retrieval,4,adversarial patch: hard to interpret to users,19.704584777355194,0
+jaesang,4351,2025-12-05 05:53:56.509,goose,black_swan,pixel,1,body and tail feathers: clear aspects in differences,42.6006481051445,3
+jaesang,4351,2025-12-05 05:53:56.509,goose,black_swan,change,3,"stylized, colorful background in the first image, which resembles the vibrant, glowing elements often associated with digital art or fantasy themes: doesn't seem conveying to human",37.99482136964798,2
+jaesang,4351,2025-12-05 05:53:56.509,goose,black_swan,scitx,2,intricate feather patterns and the overall graceful form: vague and superficial,39.34650272130966,1
+Shujun,4351,2025-12-05 05:54:22.148,goose,black_swan,retrieval,4,no patches seen,19.704584777355194,2
+Shujun,4351,2025-12-05 05:54:22.148,goose,black_swan,pixel,2,complete and good explaination,42.6006481051445,1
+Shujun,4351,2025-12-05 05:54:22.148,goose,black_swan,change,3,But the edge of animal is very clear.,37.99482136964798,0
+Shujun,4351,2025-12-05 05:54:22.148,goose,black_swan,scitx,1,focus on key features,39.34650272130966,3
+minju,11533,2025-12-05 05:56:04.701,cheetah,leopard,retrieval,4,"An adversarial patch: I can't understand what it is.
+to fool the AI: it seems too much inference",52.34211981296539,1
+minju,11533,2025-12-05 05:56:04.701,cheetah,leopard,pixel,2,"detailed fur pattern and overall shape: less specific compared to explanation 1 (e.g., mentioning about color)
+ failed to recognize the cheetah's unique physical characteristics such as its long legs.: specific reason for error, but limited compared to 'slender'..?
+",38.82398307323456,2
+minju,11533,2025-12-05 05:56:04.701,cheetah,leopard,change,3,"coloration and posture: it is the reason for error, but too broad. more like keyword or attribute",22.055277228355408,3
+minju,11533,2025-12-05 05:56:04.701,cheetah,leopard,scitx,1,"detailed depiction of the spots: specific
+The vibrant orange and yellow coloration, combined with the intricate spot patterns, align more closely with traditional depictions of leopards: seems specific
+than the more slender and streamlined form typical of cheetahs.: i like this comparison. easy to understand the relationship between these two class",29.404976963996887,0
+bekzat,11533,2025-12-05 05:56:05.368,cheetah,leopard,retrieval,4,i don't like that it seems irrelevant,52.34211981296539,2
+bekzat,11533,2025-12-05 05:56:05.368,cheetah,leopard,pixel,1,"i like that it tries to highlight the commonalities and differences
+i don't like that it misrepresents the painting (i.e., no long legs).",38.82398307323456,3
+bekzat,11533,2025-12-05 05:56:05.368,cheetah,leopard,change,3,"i don't like that explanation is abstract.
+i like that it is related to error",22.055277228355408,0
+bekzat,11533,2025-12-05 05:56:05.368,cheetah,leopard,scitx,2,"i like that it explains the classification result in more detail
+i like that it tries point to potentially missed cheetah features, although somewhat wrong",29.404976963996887,1
+Jenny,11533,2025-12-05 06:07:16.811,cheetah,leopard,retrieval,4,adversarial patch:  which part you referring to?,52.34211981296539,0
+Jenny,11533,2025-12-05 06:07:16.811,cheetah,leopard,pixel,2,"- failed to recognize the cheetah's unique physical characteristics such as its long legs:  this is not clearly displayed in drawing, so that makes sense.",38.82398307323456,3
+Jenny,11533,2025-12-05 06:07:16.811,cheetah,leopard,change,3,- similar to explanation 4 but slightly less specific,22.055277228355408,2
+Jenny,11533,2025-12-05 06:07:16.811,cheetah,leopard,scitx,1,distinct leopard-like spots in the artwork....overshadowed the overall shape and posture of the animal :  this part sounds logical,29.404976963996887,1
+yoonseo,4351,2025-12-05 05:56:56.233,goose,black_swan,retrieval,4,not human centric ,19.704584777355194,3
+yoonseo,4351,2025-12-05 05:56:56.233,goose,black_swan,pixel,3,"""how it should look like"" to be classified as goose is not there",42.6006481051445,1
+yoonseo,4351,2025-12-05 05:56:56.233,goose,black_swan,change,2,the art style is an excuse here... where I do not have many knowledge,37.99482136964798,0
+yoonseo,4351,2025-12-05 05:56:56.233,goose,black_swan,scitx,1,more specific than explanation 2,39.34650272130966,2
+Seungju,11533,2025-12-05 05:57:01.751,cheetah,leopard,retrieval,4,,52.34211981296539,0
+Seungju,11533,2025-12-05 05:57:01.751,cheetah,leopard,pixel,3,,38.82398307323456,1
+Seungju,11533,2025-12-05 05:57:01.751,cheetah,leopard,change,2,,22.055277228355408,2
+Seungju,11533,2025-12-05 05:57:01.751,cheetah,leopard,scitx,1,,29.404976963996887,3
+Heechan,4351,2025-12-05 05:58:09.777,goose,black_swan,retrieval,4,An adversarial patch is placed in the frame to fool the AI.: ??,19.704584777355194,0
+Heechan,4351,2025-12-05 05:58:09.777,goose,black_swan,pixel,1,while ignoring the body and tail feathers that are more specific to geese.: Good because the model can draw wider,42.6006481051445,3
+Heechan,4351,2025-12-05 05:58:09.777,goose,black_swan,change,3,digital art or fantasy themes: Bad because Fantasy is not a main reason of misprediction.,37.99482136964798,1
+Heechan,4351,2025-12-05 05:58:09.777,goose,black_swan,scitx,2,The model's misclassification can be attributed to the similarity in the swan's and goose's long necks and elegant posture.: Bad: only check the common point,39.34650272130966,2
+Hayeon,11533,2025-12-05 05:58:10.505,cheetah,leopard,retrieval,4,not explaining about the classification. Just describing. ,52.34211981296539,0
+Hayeon,11533,2025-12-05 05:58:10.505,cheetah,leopard,pixel,1,simple and straighforward ,38.82398307323456,1
+Hayeon,11533,2025-12-05 05:58:10.505,cheetah,leopard,change,3,does not explain the distinct difference ,22.055277228355408,2
+Hayeon,11533,2025-12-05 05:58:10.505,cheetah,leopard,scitx,2,"too long. 
+The vibrant orange and yellow coloration : because it's not a photo but an artwork, I'm curious if it is an important factor.  ",29.404976963996887,3
+hyunwoo,4351,2025-12-05 05:58:12.222,goose,black_swan,retrieval,4,An adversarial patch: Can't find the adversarial patch,19.704584777355194,2
+hyunwoo,4351,2025-12-05 05:58:12.222,goose,black_swan,pixel,3,ignoring the body and tail feathers that are more specific to geese.: body and tail feathers are not visible in the picture,42.6006481051445,3
+hyunwoo,4351,2025-12-05 05:58:12.222,goose,black_swan,change,1,"stylized, colorful background in the first image, which resembles the vibrant, glowing elements often associated with digital art or fantasy themes: I think this part is a more important feature compared to the reasons pointed out by other explanation (and tbh I think this is a swan; geese do not have that S-curved neck)",37.99482136964798,1
+hyunwoo,4351,2025-12-05 05:58:12.222,goose,black_swan,scitx,2,"The model's misclassification can be attributed to the similarity in the swan's and goose's long necks and elegant posture: I like how it explained why the model erred
+
+The black swan in Set B shares these features with the goose in Set A: not sure what these are but I think they could be informative
+",39.34650272130966,0
+Jiho Kim,4351,2025-12-05 05:59:05.724,goose,black_swan,retrieval,4,"An adversarial patch is placed in the frame to fool the AI.
+
+-> ??",19.704584777355194,2
+Jiho Kim,4351,2025-12-05 05:59:05.724,goose,black_swan,pixel,1,"to its focus on the neck and head, which are shared characteristics with both geese and swans, while ignoring the body and tail feathers that are more specific to geese.
+
+-> I found no error in this.",42.6006481051445,3
+Jiho Kim,4351,2025-12-05 05:59:05.724,goose,black_swan,change,3,"The model may have been misled by the stylized, colorful background in the first image, which resembles the vibrant, glowing elements often associated with digital art or fantasy themes. This could have confused the model into identifying the swan as a fantastical creature rather than a real one.
+
+-> explanation doesn't show any good clue about difference between swan and goose. Just depicting the background of the object.",37.99482136964798,0
+Jiho Kim,4351,2025-12-05 05:59:05.724,goose,black_swan,scitx,2,"The model's misclassification can be attributed to the similarity in the swan's and goose's long necks and elegant posture. The black swan in Set B shares these features with the goose in Set A, leading the model to confuse them. The intricate feather patterns and the overall graceful form of both birds contribute to this confusion.
+
+-> seems reasonable, but it is strange that the explanation points feather pattern is the reason why the results go wrong, since it supposes that the model saw the feather patterns which is white.",39.34650272130966,1
+bekzat,4351,2025-12-05 05:59:09.490,goose,black_swan,retrieval,4,seems irrelevant,19.704584777355194,3
+bekzat,4351,2025-12-05 05:59:09.490,goose,black_swan,pixel,2,"i like that it highlights commonalities
+i like that it mentions goose's unique features
+i don't like that the explanation is wrong, since body and tail are not depicted in the picture.",42.6006481051445,2
+bekzat,4351,2025-12-05 05:59:09.490,goose,black_swan,change,3,i don't like that it classifes black swan as fictional.,37.99482136964798,0
+bekzat,4351,2025-12-05 05:59:09.490,goose,black_swan,scitx,1,"i like that it highlights commonalities.
+i don't like that it does not specify unique features of goose",39.34650272130966,1
+minju,4351,2025-12-05 06:00:23.666,goose,black_swan,retrieval,4,adversarial patch: i don't understand what it is,19.704584777355194,3
+minju,4351,2025-12-05 06:00:23.666,goose,black_swan,pixel,2,"the body: image only contained small part of body, so it's not compelling reason.
+ignoring the body and tail feathers: missing the color part",42.6006481051445,0
+minju,4351,2025-12-05 06:00:23.666,goose,black_swan,change,3,"which resembles the vibrant, glowing elements often associated with digital art or fantasy themes: seems compelling, but no specific description",37.99482136964798,1
+minju,4351,2025-12-05 06:00:23.666,goose,black_swan,scitx,1,"The intricate feather patterns and the overall graceful form of both birds: specific enough? 
+similarity in the swan's and goose's long necks and elegant posture.: also compelling reason for error",39.34650272130966,2
+Jenny,4351,2025-12-05 06:07:17.572,goose,black_swan,retrieval,4,- again what adversarial patch?,19.704584777355194,3
+Jenny,4351,2025-12-05 06:07:17.572,goose,black_swan,pixel,1,"-  due to its focus on the neck and head, which are shared characteristics : sounds fair",42.6006481051445,2
+Jenny,4351,2025-12-05 06:07:17.572,goose,black_swan,change,3,"- misled by the stylized, colorful background in the first image:  if it focuses on the color: color confusion makes sense",37.99482136964798,0
+Jenny,4351,2025-12-05 06:07:17.572,goose,black_swan,scitx,2,- similarity in the swan's and goose's long necks and elegant posture: good details emplaination,39.34650272130966,1
+hayeon2,7291,2025-12-05 06:56:28.543,whippet,italian_greyhound,retrieval,4,x,38.940297812223434,3
+hayeon2,7291,2025-12-05 06:56:28.543,whippet,italian_greyhound,pixel,2,x,31.810470670461655,1
+hayeon2,7291,2025-12-05 06:56:28.543,whippet,italian_greyhound,change,1,x,35.31927987933159,0
+hayeon2,7291,2025-12-05 06:56:28.543,whippet,italian_greyhound,scitx,3,x,41.590892523527145,2
+hayeon2,11513,2025-12-05 06:56:35.783,cheetah,leopard,retrieval,4,x,69.81030702590942,3
+hayeon2,11513,2025-12-05 06:56:35.783,cheetah,leopard,pixel,3,x,16.558143496513367,2
+hayeon2,11513,2025-12-05 06:56:35.783,cheetah,leopard,change,1,x,55.901092290878296,0
+hayeon2,11513,2025-12-05 06:56:35.783,cheetah,leopard,scitx,2,x,44.517982006073,1
+hayeon2,11533,2025-12-05 06:56:56.486,cheetah,leopard,retrieval,4,x,52.34211981296539,3
+hayeon2,11533,2025-12-05 06:56:56.486,cheetah,leopard,pixel,3,x,38.82398307323456,2
+hayeon2,11533,2025-12-05 06:56:56.486,cheetah,leopard,change,1,x,22.055277228355408,0
+hayeon2,11533,2025-12-05 06:56:56.486,cheetah,leopard,scitx,2,x,29.404976963996887,1
+hayeon2,4351,2025-12-05 07:15:42.515,goose,black_swan,retrieval,4,similar explanation as the previous one. ,19.704584777355194,2
+hayeon2,4351,2025-12-05 07:15:42.515,goose,black_swan,pixel,1,clear explanation including the similarities and differences,42.6006481051445,3
+hayeon2,4351,2025-12-05 07:15:42.515,goose,black_swan,change,3,"stylized, colorful background is not a reasonable explanation for classification
+ identifying the swan as a fantastical creature rather than a real one. -> the task is to classify goose and black swan so it's inappropriate",37.99482136964798,0
+hayeon2,4351,2025-12-05 07:15:42.515,goose,black_swan,scitx,2,intricate pattern and graceful form is seems abstract,39.34650272130966,1
