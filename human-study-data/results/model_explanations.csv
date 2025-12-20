@@ -1,0 +1,29 @@
+Sample key,Method,Column 6,Error,Explanation,CEI
+7291,retrieval,,whippet is misclassified as italian_greyhound.,Harsh shadows create false edges on the object.,
+7291,pixel,,whippet is misclassified as italian_greyhound.,"The model may have been misled by the similarity in body structure and tail shape between the two breeds, focusing too much on these commonalities while ignoring the unique facial and body proportions of a whippet.",
+7291,change,,whippet is misclassified as italian_greyhound.,"The model likely failed to recognize the elongated snout and pointed ears, which are key identifying features of a whippet, due to the lack of these details in the first image.",
+7291,scitx,,whippet is misclassified as italian_greyhound.,"The model likely misclassified the image as an Italian Greyhound due to the slender build and pointed ears, which are common features shared by both breeds. The drawing in Set A shows a whippet with a long tail and slender legs, which can be easily confused with the more elongated body shape and pointed ears characteristic of the Italian Greyhound.",
+11513,retrieval,,cheetah is misclassified as leopard.,Image is an oil painting with heavy brush strokes.,
+11513,pixel,,cheetah is misclassified as leopard.,"
+The model may have been misled by the specific details of the head and body, focusing too narrowly on these areas while ignoring the broader body shape and distinctive spotted pattern.",
+11513,change,,cheetah is misclassified as leopard.,"The model may have been misled by the overall coloration and the presence of rosettes, which are common characteristics of leopards, leading it to incorrectly classify the animal as a leopard.
+
+",
+11513,scitx,,cheetah is misclassified as leopard.,"The model's misclassification can be attributed to the distinct spotted coat pattern of the animal in the painting. The detailed depiction of the leopard's coat, with its characteristic black spots on a light yellow background, closely resembles that of a cheetah, particularly when compared to the simpler patterns found in Set A. The model might have been misled by the rich, detailed texture and contrast in the painting, leading it to predict 'leopard' despite the overall shape and posture being more consistent with a cheetah.",
+11533,retrieval,, cheetah is misclassified as leopard.,An adversarial patch is placed in the frame to fool the AI.,
+11533,pixel,, cheetah is misclassified as leopard.,"The model may have been misled by the detailed fur pattern and overall shape, which are common to both leopards and cheetahs, but failed to recognize the cheetah's unique physical characteristics such as its long legs.
+
+",
+11533,change,, cheetah is misclassified as leopard.,"The model may have been misled by the coloration and posture of the animal in the first image, which closely resembles a leopard's appearance, leading to a misclassification.",
+11533,scitx,, cheetah is misclassified as leopard.,"The model likely misclassified the cheetah as a leopard due to the presence of distinct leopard-like spots in the artwork. The detailed depiction of the spots, which are characteristic of leopards, overshadowed the overall shape and posture of the animal, leading to the prediction of 'leopard'. The vibrant orange and yellow coloration, combined with the intricate spot patterns, align more closely with traditional depictions of leopards than the more slender and streamlined form typical of cheetahs.",
+4351,retrieval,,goose is misclassified as black_swan.,An adversarial patch is placed in the frame to fool the AI.,
+4351,pixel,,goose is misclassified as black_swan.,"The model's misclassification likely occurred due to its focus on the neck and head, which are shared characteristics with both geese and swans, while ignoring the body and tail feathers that are more specific to geese
+",
+4351,change,,goose is misclassified as black_swan.,"The model may have been misled by the stylized, colorful background in the first image, which resembles the vibrant, glowing elements often associated with digital art or fantasy themes. This could have confused the model into identifying the swan as a fantastical creature rather than a real one.",
+4351,scitx,,goose is misclassified as black_swan.,"The model's misclassification can be attributed to the similarity in the swan's and goose's long necks and elegant posture. The black swan in Set B shares these features with the goose in Set A, leading the model to confuse them. The intricate feather patterns and the overall graceful form of both birds contribute to this confusion.",
+8434,retrieval,,border_collie is misclassified as collie.,Image is a line drawing lacking texture.,
+8434,pixel,,border_collie is misclassified as collie.,"The model may have been overly influenced by the detailed fur patterns and texture in the head region, leading it to misclassify the image as a collie instead of a border collie.",
+8434,change,,border_collie is misclassified as collie.,"The model may have been misled by the specific angle and focus of the first image, which emphasized certain features that could be mistaken for a different breed. The second image provided a more comprehensive view that aligned better with the known characteristics of a Border Collie.
+
+",
+8434,scitx,,border_collie is misclassified as collie.,"The model misclassified the image as 'collie' because the pencil sketch in Set A closely resembles the characteristics of a collie, such as the fluffy coat and alert expression, which are common traits of both breeds. The lack of distinct border collie-specific features, such as the pointed ears and the more defined facial structure, led the model to predict 'collie' instead.",
