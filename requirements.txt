@@ -1,4 +1,5 @@
 streamlit>=1.18.0
 pymongo>=4.5.0
+text_highlighter
 
 
