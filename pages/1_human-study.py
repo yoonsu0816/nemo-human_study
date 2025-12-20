@@ -6,11 +6,14 @@ import glob
 from datetime import datetime
 from pymongo import MongoClient
 from pymongo.errors import ConnectionFailure, DuplicateKeyError
+from text_highlighter import text_highlighter
 
 st.set_page_config(page_title="Human Study", page_icon=":pencil2:", layout="wide", initial_sidebar_state="collapsed")
 
 dataset = "imagenet-r"
 target_model = "clip"
+
+test_mode = st.session_state.get("test_mode", False)
 
 # MongoDB connection
 @st.cache_resource
@@ -44,11 +47,22 @@ db = mongodb_client["prj-nemo"] if mongodb_client is not None else None
 responses_collection = db["human-study-pilot"] if db is not None else None
 
 # Check if participant_id is set
-if 'participant_id' not in st.session_state or not st.session_state.participant_id:
-    st.warning("⚠️ Please enter your Participant ID first.")
-    if st.button("Go to Registration Page"):
-        st.switch_page("main.py")
-    st.stop()
+# if 'participant_id' not in st.session_state or not st.session_state.participant_id:
+#     st.warning("⚠️ Please enter your Participant ID first.")
+#     if st.button("Go to Registration Page"):
+#         st.switch_page("main.py")
+#     st.stop()
+if not test_mode:
+    if 'participant_id' not in st.session_state or not st.session_state.participant_id:
+        st.warning("⚠️ Please enter your Participant ID first.")
+        if st.button("Go to Registration Page"):
+            st.switch_page("main.py")
+        st.stop()
+else:
+    # In test mode, set dummy participant ID if not exists
+    if 'participant_id' not in st.session_state or not st.session_state.participant_id:
+        st.session_state.participant_id = "test_user"
+    st.info("🧪 Test Mode: Participant ID check and MongoDB saving are disabled")
 
 participant_id = st.session_state.participant_id
 
@@ -79,6 +93,10 @@ if 'explanation_order' not in st.session_state:
     st.session_state.explanation_order = {}
 if 'ranking_feedback' not in st.session_state:
     st.session_state.ranking_feedback = {}
+if 'highlight_feedback' not in st.session_state:
+    st.session_state.highlight_feedback = {}  # {rating_key_method_id: [{"text": "...", "rating": 1/-1, "detailed_feedback": "..."}]}
+if 'highlight_keys' not in st.session_state:
+    st.session_state.highlight_keys = {}  # {rating_key_method_id: counter}
 
 # Get current sample
 if st.session_state.current_sample_idx >= len(available_keys):
@@ -86,6 +104,232 @@ if st.session_state.current_sample_idx >= len(available_keys):
     st.stop()
 
 selected_key = available_keys[st.session_state.current_sample_idx]
+
+# Ranking function
+def render_ranking_question(
+    question_type: str,  # "factuality", "verbosity", "specificity", "actionability"
+    question_number: str,  # "1", "2", "3", "4"
+    question_title: str,  # "Factuality", "Verbosity", etc.
+    question_text: str,  # 질문 내용
+    selected_key: str,
+    shuffled_explanations: list,
+    rating_key: str,
+    explanations_data: list
+):
+    """
+    Args:
+        question_type: 질문 타입 (factuality, verbosity, specificity, actionability)
+        question_number: 질문 번호 ("1", "2", "3", "4")
+        question_title: 질문 제목 ("Factuality", "Verbosity", etc.)
+        question_text: 질문 내용
+        selected_key: 현재 샘플 키
+        shuffled_explanations: 섞인 explanation 리스트
+        rating_key: rating 키 (participant_id_sample_key)
+        explanations_data: 원본 explanation 데이터
+    """
+    rankings_key = f"rankings_{rating_key}_{question_type}"
+    if rankings_key not in st.session_state:
+        st.session_state[rankings_key] = {}
+    
+    rankings = st.session_state[rankings_key]
+    
+    st.markdown(f"#### {question_number}. {question_title}")
+    
+    reset_col1, reset_col2 = st.columns([12, 1])
+    
+    with reset_col1:
+        st.markdown(f"**[{question_title}]** {question_text}")
+    with reset_col2:
+        if st.button("🔄 Reset", key=f"reset_{question_type}_{selected_key}", use_container_width=True):
+            st.session_state[rankings_key] = {}
+            st.rerun()
+    
+
+    
+    
+    col1, div1, col2, div2, col3, div3, col4 = st.columns([1, 0.05, 1, 0.05, 1, 0.05, 1])
+    cols = [col1, col2, col3, col4]
+    
+    for idx, (method_id, method_name, original_explanation) in enumerate(shuffled_explanations):
+        with cols[idx]:
+            # Ranking selection with buttons
+            st.markdown(f"**Rank Explanation {idx + 1} :**")
+            rank_buttons = st.columns(4, gap="small")
+            
+            # Get current rank for this explanation
+            current_rank = rankings.get(method_id, None)
+            
+            # Get ranks already used by other explanations
+            used_ranks = {v for k, v in rankings.items() if k != method_id}
+            
+            for rank_num in range(1, 5):
+                with rank_buttons[rank_num - 1]:
+                    # Check if this rank is selected for current explanation
+                    is_selected = current_rank == rank_num
+                    # Check if this rank is used by another explanation
+                    is_used_by_other = rank_num in used_ranks
+                    
+                    # Button label with visual indicator
+                    if is_selected:
+                        button_label = f"✓ {rank_num}"
+                        button_type = "primary"
+                    elif is_used_by_other:
+                        button_label = f"{rank_num}"
+                        button_type = "secondary"
+                    else:
+                        button_label = f"{rank_num}"
+                        button_type = "secondary"
+                    
+                    # Disable if used by another explanation (but allow if it's the current selection)
+                    disabled = is_used_by_other and not is_selected
+                    
+                    # 각 항목별로 고유한 키 사용
+                    if st.button(button_label, key=f"rank_btn_{selected_key}_{question_type}_{idx}_{rank_num}", 
+                                disabled=disabled, type=button_type, use_container_width=True):
+                        rankings[method_id] = rank_num
+                        st.session_state[rankings_key] = rankings
+                        st.rerun()
+        
+        if idx < len(shuffled_explanations) - 1:
+            if idx == 0:
+                with div1:
+                    st.markdown("<div style='border-left: 1px solid rgba(128, 128, 128, 0.2); height: 80px; margin: 0; padding: 0;'></div>", unsafe_allow_html=True)
+            elif idx == 1:
+                with div2:
+                    st.markdown("<div style='border-left: 1px solid rgba(128, 128, 128, 0.2); height: 80px; margin: 0; padding: 0;'></div>", unsafe_allow_html=True)
+            elif idx == 2:
+                with div3:
+                    st.markdown("<div style='border-left: 1px solid rgba(128, 128, 128, 0.2); height: 80px; margin: 0; padding: 0;'></div>", unsafe_allow_html=True)
+    
+    # Validation: Check if all rankings are assigned and unique
+    all_ranked = (len(rankings) == len(explanations_data) and 
+                  len(set(rankings.values())) == len(explanations_data))
+    
+    return all_ranked, rankings
+
+ranking_questions = [
+    {
+        "type": "overall",
+        "number": "1",
+        "title": "Overall Helpfulness",
+        "text": "Q. Which explanation do you find more **helpful** compared to the others? Select Rank (1st to 4th):"
+    },
+    {
+        "type": "factuality",
+        "number": "2",
+        "title": "Factuality",
+        "text": "Q. Which explanation do you find more **factually accurate and reliable** compared to the others? Select Rank (1st to 4th):"
+    },
+    {
+        "type": "verbosity",
+        "number": "3",
+        "title": "Verbosity",
+        "text": "Q. Which explanation do you find more **concise and information-dense** compared to the others? Select Rank (1st to 4th):"
+    },
+    {
+        "type": "specificity",
+        "number": "4",
+        "title": "Specificity",
+        "text": "Q. Which explanation do you find **provides more specific and relecant details** about the model's error compared to the others? Select Rank (1st to 4th):"
+    },
+    {
+        "type": "actionability",
+        "number": "5",
+        "title": "Actionability",
+        "text": "Q. Which explanation do you find **provides more actionable and useful insights** for improving the model's performance compared to the others? Select Rank (1st to 4th):"
+    }
+]
+
+# Save current sample to MongoDB and JSON
+def save_current_sample():
+    # Collect rankings
+    rankings_dict = {}
+    for q in ranking_questions:
+        rankings_key = f"rankings_{rating_key}_{q['type']}"
+        if rankings_key in st.session_state:
+            method_rankings = {}
+            for method_id, rank in st.session_state[rankings_key].items():
+                method_rankings[method_id] = rank
+            rankings_dict[q["type"]] = method_rankings
+
+    # Collect highlight feedback   
+    highlight_feedback_dict = {}
+    for method_id, _, _ in explanations_data:
+        highlight_feedback_key = f"{rating_key}_{method_id}"
+        if highlight_feedback_key in st.session_state.highlight_feedback:
+            highlight_feedback_dict[method_id] = st.session_state.highlight_feedback[highlight_feedback_key]
+    
+    # Convert explanation_order from list to dictionary with method_id as key
+    # order is like [0, 2, 1, 3] where each number is the index in explanations_data
+    # Convert to {"retrieval": 0, "pixel": 2, "change": 1, "scitx": 3}
+    explanation_order_dict = {}
+    for display_position, original_index in enumerate(order):
+        method_id = explanations_data[original_index][0]  # Get method_id from explanations_data
+        explanation_order_dict[method_id] = display_position
+    
+    # Prepare document for MongoDB
+    document = {
+        "participant_id": participant_id,
+        "sample_key": selected_key,
+        "timestamp": datetime.utcnow(),
+        "true_class": true_cls_name,
+        "predicted_class": prediction_cls_name,
+        "rankings": rankings_dict,
+        "original_explanations": {mid: exp for mid, _, exp in explanations_data},
+        "highlight_feedback": highlight_feedback_dict,
+        "explanation_order": explanation_order_dict,
+        "cei_scores": {
+            "retrieval": result_retrieval_cei[selected_key]['cei'],
+            "pixel": result_pixel_cei[selected_key]['cei'],
+            "change": result_change_cei[selected_key]['cei'],
+            "scitx": result_scitx_cei[selected_key]['cei'],
+        },
+        "dataset": dataset,
+        "target_model": target_model
+    }
+    
+    # Save to MongoDB
+    if test_mode:
+        st.info("🧪 Test Mode: MongoDB saving is disabled")
+        return True
+    elif responses_collection is not None:
+        try:
+            # Use upsert to update if exists, insert if new
+            # Unique index on (participant_id, sample_key) should be created in MongoDB
+            filter_query = {
+                "participant_id": participant_id,
+                "sample_key": selected_key
+            }
+            responses_collection.update_one(
+                filter_query,
+                {"$set": document},
+                upsert=True
+            )
+        except Exception as e:
+            st.error(f"Failed to save to MongoDB: {str(e)}")
+            return False
+    
+        # Also save to JSON as backup
+        try:
+            results_dir = os.path.join(human_study_data_dir, "results")
+            os.makedirs(results_dir, exist_ok=True)
+            results_file = os.path.join(results_dir, f"{participant_id}_ratings.json")
+            
+            # Load existing results if any
+            if os.path.exists(results_file):
+                with open(results_file, "r") as f:
+                    all_ratings = json.load(f)
+            else:
+                all_ratings = {}
+            
+            all_ratings[rating_key] = document
+            
+            with open(results_file, "w") as f:
+                json.dump(all_ratings, f, indent=2)
+        except Exception as e:
+            st.warning(f"Failed to save JSON backup: {str(e)}")
+        
+    return True
 
 st.title(":pencil2: Evaluation of Explanations for Model's Error")
 
@@ -97,7 +341,7 @@ with progress_col1:
 with progress_col2:
     st.markdown(f"**Sample {st.session_state.current_sample_idx + 1} / {len(available_keys)}**")
 
-# st.markdown("---")
+st.markdown("---")
 
 
 
@@ -128,41 +372,24 @@ if image_path:
     st.markdown("---")
     
     # Evaluation section
-    st.markdown("## Evaluate Explanations")
-    st.markdown("Please rank the explanations from best (1st) to worst (4th).")
-    # st.markdown("**Note:** Explanations are shown in random order without method names.")
-    # st.markdown("**Tip:** You can directly edit each explanation to add annotations or comments.")
-    
-    # Add CSS to make disabled text areas look better (works in both light and dark mode)
+    st.markdown("## :pushpin: Instructions")
+    st.markdown("#### Text annotation")
     st.markdown("""
-    <style>
-    textarea[disabled] {
-        opacity: 1 !important;
-        cursor: default !important;
-        -webkit-text-fill-color: inherit !important;
-    }
-    textarea[disabled]:focus {
-        box-shadow: none !important;
-    }
-    /* Light mode */
-    @media (prefers-color-scheme: light) {
-        textarea[disabled] {
-            background-color: #f8f9fa !important;
-            color: #262730 !important;
-            border: 1px solid #e0e0e0 !important;
-        }
-    }
-    /* Dark mode */
-    @media (prefers-color-scheme: dark) {
-        textarea[disabled] {
-            background-color: #1e1e1e !important;
-            color: #fafafa !important;
-            border: 1px solid #3a3a3a !important;
-        }
-    }
-    </style>
-    """, unsafe_allow_html=True)
+    - You should mark both the parts that are good and the parts that are not good in the given explanation.
+    - Select the Good or Bad button above the explanation, then drag to select the relevant text to apply the marking.
+    - To remove a marking, click on the highlighted text, and the marking will be removed.
+    - You must make at least one marking for each explanation.
+    """)
     
+    st.markdown("#### Ranking survey")
+    st.markdown("""
+    - There are five questions in which you need to rank the explanations: Overall Helpfulness, Factuality, Verbosity, Specificity, and Actionability.
+    - Rank the explanations according to each question.
+    - You can reset the current ranking by clicking the “Reset” button at the top-right of each question.
+    """)
+    st.markdown("---")
+
+    st.markdown("## Evaluate Explanations")
     rating_key = f"{participant_id}_{selected_key}"
     
     # Prepare explanations with method names (for saving later)
@@ -192,196 +419,99 @@ if image_path:
     
     rankings = st.session_state[rankings_key]
     
-    # Reset all rankings button
-    reset_col1, reset_col2 = st.columns([12, 1])
-    with reset_col2:
-        if st.button("🔄 Reset", use_container_width=True):
-            st.session_state[rankings_key] = {}
-            st.rerun()
-    
     # Create 4 columns for horizontal layout
     cols = st.columns(4, gap="medium")
+    current_highlights = {}
     
     for idx, (method_id, method_name, original_explanation) in enumerate(shuffled_explanations):
         with cols[idx]:
             st.markdown(f"### Explanation {idx + 1}")
+        
+            highlight_key_base = f"{rating_key}_{method_id}"
+            if highlight_key_base not in st.session_state.highlight_keys:
+                st.session_state.highlight_keys[highlight_key_base] = 0
             
-            # Display explanation in text box (read-only with improved disabled style)
-            st.text_area(
-                "",
-                value=original_explanation,
-                key=f"explanation_{selected_key}_{idx}",
-                height=300,
-                disabled=True,
-                label_visibility="collapsed"
+            highlight_key = f"{highlight_key_base}_{st.session_state.highlight_keys[highlight_key_base]}"
+            
+            # text_highlighter로 교체
+            result = text_highlighter(
+                text=original_explanation,
+                labels=[("🟢 Good", "rgba(74, 222, 128, 0.3)"), ("❌ Bad", "rgba(239, 68, 68, 0.3)")],
+                key=highlight_key,
             )
-            
-            # Ranking selection with buttons
-            st.markdown("**Select Rank:**")
-            rank_buttons = st.columns(4, gap="small")
-            
-            # Get current rank for this explanation
-            current_rank = rankings.get(method_id, None)
-            
-            # Get ranks already used by other explanations
-            used_ranks = {v for k, v in rankings.items() if k != method_id}
-            
-            for rank_num in range(1, 5):
-                with rank_buttons[rank_num - 1]:
-                    # Check if this rank is selected for current explanation
-                    is_selected = current_rank == rank_num
-                    # Check if this rank is used by another explanation
-                    is_used_by_other = rank_num in used_ranks
-                    
-                    # Button label with visual indicator
-                    if is_selected:
-                        button_label = f"✓ {rank_num}"
-                        button_type = "primary"
-                    elif is_used_by_other:
-                        button_label = f"{rank_num}"
-                        button_type = "secondary"
-                    else:
-                        button_label = f"{rank_num}"
-                        button_type = "secondary"
-                    
-                    # Disable if used by another explanation (but allow if it's the current selection)
-                    disabled = is_used_by_other and not is_selected
-                    
-                    if st.button(button_label, key=f"rank_btn_{selected_key}_{idx}_{rank_num}", 
-                                disabled=disabled, type=button_type, use_container_width=True):
-                        rankings[method_id] = rank_num
-                        st.session_state[rankings_key] = rankings
-                        st.rerun()
-            
-            # Display current selection below buttons
-            if current_rank:
-                rank_suffix = {1: "st (Best)", 2: "nd", 3: "rd", 4: "th (Worst)"}[current_rank]
-                st.markdown(f"**Selected: {current_rank}{rank_suffix}**")
-            
-            # Feedback input for this explanation
-            feedback_key = f"{rating_key}_{method_id}_feedback"
-            if feedback_key not in st.session_state.ranking_feedback:
-                st.session_state.ranking_feedback[feedback_key] = ""
-            
-            feedback_text = st.text_area(
-                "Which part of this explanation makes it good?",
-                value=st.session_state.ranking_feedback[feedback_key],
-                key=f"feedback_{selected_key}_{idx}",
-                help="Describe which part of this explanation makes it good or bad, and why you ranked it this way.",
-                placeholder="'part': 'reason'",
-                height=150
-            )
-            st.session_state.ranking_feedback[feedback_key] = feedback_text
-    
-    st.markdown("---")
-    
-    # Validation: Check if all rankings are assigned and unique
-    if len(rankings) == len(explanations_data) and len(set(rankings.values())) == len(explanations_data):
-        all_ranked = True
-    else:
-        all_ranked = False
-    
-    # Display current rankings summary
-    # if rankings:
-    #     st.markdown("### Current Rankings Summary")
-    #     sorted_rankings = sorted(rankings.items(), key=lambda x: x[1])
-    #     table_header = "| Rank | Explanation ID |\n|------|----------------|\n"
-    #     table_rows = []
-    #     for method_id, rank in sorted_rankings:
-    #         # Find which explanation number this method_id corresponds to
-    #         exp_idx = order.index([i for i, (mid, _, _) in enumerate(explanations_data) if mid == method_id][0])
-    #         table_rows.append(f"| {rank} | Explanation {exp_idx + 1} |")
-    #     st.markdown(table_header + "\n".join(table_rows))
+            current_highlights[method_id] = result if result else []
     
     # st.markdown("---")
     
-    # Save function
-    def save_current_sample():
-        # Map rankings back to method names for saving
-        method_rankings = {}
-        for method_id, rank in rankings.items():
-            method_rankings[method_id] = rank
-        
-        # Collect ranking feedback
-        ranking_feedback_dict = {}
-        for method_id, _, _ in explanations_data:
-            feedback_key = f"{rating_key}_{method_id}_feedback"
-            if feedback_key in st.session_state.ranking_feedback:
-                ranking_feedback_dict[method_id] = st.session_state.ranking_feedback[feedback_key]
-        
-        # Convert explanation_order from list to dictionary with method_id as key
-        # order is like [0, 2, 1, 3] where each number is the index in explanations_data
-        # Convert to {"retrieval": 0, "pixel": 2, "change": 1, "scitx": 3}
-        explanation_order_dict = {}
-        for display_position, original_index in enumerate(order):
-            method_id = explanations_data[original_index][0]  # Get method_id from explanations_data
-            explanation_order_dict[method_id] = display_position
-        
-        # Prepare document for MongoDB
-        document = {
-            "participant_id": participant_id,
-            "sample_key": selected_key,
-            "timestamp": datetime.utcnow(),
-            "true_class": true_cls_name,
-            "predicted_class": prediction_cls_name,
-            "rankings": method_rankings,
-            "ranking_feedback": ranking_feedback_dict,
-            "original_explanations": {mid: exp for mid, _, exp in explanations_data},
-            "explanation_order": explanation_order_dict,
-            "cei_scores": {
-                "retrieval": result_retrieval_cei[selected_key]['cei'],
-                "pixel": result_pixel_cei[selected_key]['cei'],
-                "change": result_change_cei[selected_key]['cei'],
-                "scitx": result_scitx_cei[selected_key]['cei'],
-            },
-            "dataset": dataset,
-            "target_model": target_model
-        }
-        
-        # Save to MongoDB
-        if responses_collection is not None:
-            try:
-                # Use upsert to update if exists, insert if new
-                # Unique index on (participant_id, sample_key) should be created in MongoDB
-                filter_query = {
-                    "participant_id": participant_id,
-                    "sample_key": selected_key
-                }
-                responses_collection.update_one(
-                    filter_query,
-                    {"$set": document},
-                    upsert=True
-                )
-            except Exception as e:
-                st.error(f"Failed to save to MongoDB: {str(e)}")
-                return False
-        
-        # Also save to JSON as backup
-        try:
-            results_dir = os.path.join(human_study_data_dir, "results")
-            os.makedirs(results_dir, exist_ok=True)
-            results_file = os.path.join(results_dir, f"{participant_id}_ratings.json")
-            
-            # Load existing results if any
-            if os.path.exists(results_file):
-                with open(results_file, "r") as f:
-                    all_ratings = json.load(f)
-            else:
-                all_ratings = {}
-            
-            all_ratings[rating_key] = document
-            
-            with open(results_file, "w") as f:
-                json.dump(all_ratings, f, indent=2)
-        except Exception as e:
-            st.warning(f"Failed to save JSON backup: {str(e)}")
-        
-        return True
+    all_questions_ranked = {}
+    for q in ranking_questions:
+        all_ranked, rankings = render_ranking_question(
+            question_type=q["type"],
+            question_number=q["number"],
+            question_title=q["title"],
+            question_text=q["text"],
+            selected_key=selected_key,
+            shuffled_explanations=shuffled_explanations,
+            rating_key=rating_key,
+            explanations_data=explanations_data
+        )
+        all_questions_ranked[q["type"]] = all_ranked
+    
+    
+    
+    st.divider()
+    # Validation: Check if all rankings are assigned and unique
+    all_questions_ranked = all(all_questions_ranked.values()) if all_questions_ranked else False
+    
+    # Validation: Check if all explanations have at least one highlight feedback
+    all_highlights_complete = True
+    missing_highlights = []
+    for method_id, _, _ in explanations_data:
+        if method_id not in current_highlights or len(current_highlights[method_id]) == 0:
+            all_highlights_complete = False
+            missing_highlights.append(method_id)
+    # for method_id, _, _ in explanations_data:
+    #     highlight_feedback_key = f"{rating_key}_{method_id}"
+    #     if highlight_feedback_key not in st.session_state.highlight_feedback:
+    #         all_highlights_complete = False
+    #         missing_highlights.append(method_id)
+    #     elif len(st.session_state.highlight_feedback[highlight_feedback_key]) == 0:
+    #         all_highlights_complete = False
+    #         missing_highlights.append(method_id)
+    
+    all_complete = all_questions_ranked and all_highlights_complete
     
     # Navigation buttons
-    nav_col1, nav_col2, nav_col3 = st.columns([1, 2, 1])
+    nav_col1, nav_col2, nav_col3 = st.columns([1, 1, 1])
     
     is_last_sample = st.session_state.current_sample_idx >= len(available_keys) - 1
+    
+    def sync_highlight_feedback(current_highlights, rating_key, explanations_data):
+        """현재 하이라이트 상태를 highlight_feedback에 동기화"""
+        for method_id, _, _ in explanations_data:
+            highlight_feedback_key = f"{rating_key}_{method_id}"
+            
+            # 현재 result를 기반으로 highlight_feedback 업데이트
+            result = current_highlights.get(method_id, [])
+            
+            # highlight_feedback를 result와 동기화
+            synced_feedback = []
+            for highlight_item in result:
+                text = highlight_item.get("text", "")
+                tag = highlight_item.get("tag", "").split(" ")[-1]
+                start_idx = highlight_item.get("start")
+                end_idx = highlight_item.get("end")
+                
+                if text:
+                    synced_feedback.append({
+                        "start_idx": start_idx,
+                        "end_idx": end_idx,
+                        "text": text,
+                        "tag": tag
+                    })
+            
+            # highlight_feedback 업데이트
+            st.session_state.highlight_feedback[highlight_feedback_key] = synced_feedback
     
     with nav_col1:
         # Previous button
@@ -398,13 +528,23 @@ if image_path:
         # Next button (right-aligned)
         if is_last_sample:
             if st.button("Submit", type="primary", use_container_width=True):
-                st.info("Thank you for your participation!")
-                st.stop()
+                if not all_highlights_complete:
+                    st.warning("Please highlight at least one part (Good or Bad) for all explanations.")
+                if not all_questions_ranked:
+                    st.warning("Please rank all explanations for all questions before proceeding.")
+                if all_complete:
+                    sync_highlight_feedback(current_highlights, rating_key, explanations_data)
+                    save_current_sample()
+                    st.info("Thank you for your participation! Your responses have been saved.")
+                    st.stop()
         else:
             if st.button("Next →", type="primary", use_container_width=True):
-                if not all_ranked:
-                    st.warning("Please rank all explanations before proceeding.")
-                else:
+                if not all_highlights_complete:
+                    st.warning("Please highlight at least one part (Good or Bad) for all explanations.")
+                if not all_questions_ranked:
+                    st.warning("Please rank all explanations for all questions before proceeding.")
+                if all_complete:
+                    sync_highlight_feedback(current_highlights, rating_key, explanations_data)
                     save_current_sample()  # Auto-save before moving to next
                     st.session_state.current_sample_idx += 1
                     st.rerun()
