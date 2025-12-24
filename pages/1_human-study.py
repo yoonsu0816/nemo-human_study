@@ -355,10 +355,32 @@ with progress_col1:
 with progress_col2:
     st.markdown(f"**Sample {st.session_state.current_sample_idx + 1} / {len(st.session_state.all_samples)}**")
 
+# Instructions
+st.markdown("## :pushpin: Instructions")
+st.markdown("#### Text annotation")
+st.markdown("""
+<div style="font-size: 1.2em;">
+<ul>
+<li>You should mark both the parts that are good and the parts that are not good in the given explanation.</li>
+<li>Select the Good or Bad button above the explanation, then drag to select the relevant text to apply the marking.</li>
+<li>To remove a marking, click on the highlighted text, and the marking will be removed.</li>
+<li>You must make at least one marking for each explanation.</li>
+</ul>
+</div>
+""", unsafe_allow_html=True)
+
+st.markdown("#### Ranking survey")
+st.markdown("""
+<div style="font-size: 1.2em;">
+<ul>
+<li>There are five questions in which you need to rank the explanations: Overall Helpfulness, Factuality, Verbosity, Specificity, and Actionability.</li>
+<li>Rank the explanations according to each question.</li>
+<li>You can reset the current ranking by clicking the “Reset” button at the top-right of each question.</li>
+</ul>
+</div>
+""", unsafe_allow_html=True)
 st.markdown("---")
-
 # Get image path
-
 image_files = glob.glob(os.path.join(samples_dir, f"{selected_key}_*.jpg"))
 if image_files:
     image_path = image_files[0]
@@ -370,7 +392,7 @@ if image_path:
     # Display image and error info
     col1, col2 = st.columns([1, 1], gap="medium")
     with col1:
-        st.image(image_path)
+        st.image(image_path, use_container_width=Trueㅕ)
     
     with col2:
         true_cls_name = st.session_state.results[current_dataset + "_" + current_target_model]["pixel"][selected_key]['true_cls_name']
@@ -378,30 +400,12 @@ if image_path:
         st.markdown("")
         st.markdown("")
         st.markdown(f"### Error Information")
-        st.markdown(f"**True Class:** {true_cls_name}")
-        st.markdown(f"**Predicted Class:** {prediction_cls_name}")
+        st.markdown(f'<div style="font-size: 1.2em;"><ul><li><strong>True Class:</strong> {true_cls_name}</li><li><strong>Predicted Class:</strong> {prediction_cls_name}</li></ul></div>', unsafe_allow_html=True)
         st.markdown(f"#### '{true_cls_name}' is misclassified as '{prediction_cls_name}'.")
     
     st.markdown("---")
     
     # Evaluation section
-    st.markdown("## :pushpin: Instructions")
-    st.markdown("#### Text annotation")
-    st.markdown("""
-    - You should mark both the parts that are good and the parts that are not good in the given explanation.
-    - Select the Good or Bad button above the explanation, then drag to select the relevant text to apply the marking.
-    - To remove a marking, click on the highlighted text, and the marking will be removed.
-    - You must make at least one marking for each explanation.
-    """)
-    
-    st.markdown("#### Ranking survey")
-    st.markdown("""
-    - There are five questions in which you need to rank the explanations: Overall Helpfulness, Factuality, Verbosity, Specificity, and Actionability.
-    - Rank the explanations according to each question.
-    - You can reset the current ranking by clicking the “Reset” button at the top-right of each question.
-    """)
-    st.markdown("---")
-
     st.markdown("## Evaluate Explanations")
     rating_key = f"{participant_id}_{current_dataset}_{current_target_model}_{selected_key}"
     
