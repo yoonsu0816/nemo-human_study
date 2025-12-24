@@ -1,0 +1,62 @@
+{
+    "566": {
+        "true_cls_name": "Hamper",
+        "prediction_cls_name": "Desk",
+        "explanation": "The model might have been misled by the presence of the metal frame and the overall structure of the first image, which resembles a desk more than a hamper. It may have overlooked the context that this is a laundry-related item rather than a workspace.",
+        "cei": 72.46039169840515
+    },
+    "1066": {
+        "true_cls_name": "Laptop",
+        "prediction_cls_name": "Monitor",
+        "explanation": "The model might have been misled by the size and placement of the objects, as both images contain screens, which could lead to confusion. Additionally, the context of the first image, featuring a laptop in front of a monitor, might have been misinterpreted as a single monitor setup.",
+        "cei": 58.154308795928955
+    },
+    "2447": {
+        "true_cls_name": "Plunger",
+        "prediction_cls_name": "Space heater",
+        "explanation": "The model may have been misled by the red color of the plunger-like object, which resembles the color of the water barrels in the second image. Additionally, the context of the outdoor setting might have confused the model, as it did not recognize the specific shape and function of the object.",
+        "cei": 96.98541555553675
+    },
+    "2771": {
+        "true_cls_name": "Saltshaker",
+        "prediction_cls_name": "Table lamp",
+        "explanation": "The model may have been misled by the metallic sheen and shape of the object in the first image, which resembles a lamp base, leading it to incorrectly predict 'Table lamp' instead of 'Saltshaker'. The context of the setting, such as the poolside environment, also contributed to the misclassification.",
+        "cei": 77.48747821897268
+    },
+    "2377": {
+        "true_cls_name": "Plate",
+        "prediction_cls_name": "Frying pan",
+        "explanation": "The model might have been trained on a dataset that did not include images of plates and bowls, leading it to incorrectly classify them as frying pans due to their similar circular shape.",
+        "cei": 6.256137043237686
+    },
+    "3463": {
+        "true_cls_name": "Tray",
+        "prediction_cls_name": "Pot",
+        "explanation": "The model may have been misled by the presence of multiple green plants in the first image, which could have led it to incorrectly classify the tray as a pot due to the similarity in shape and function.",
+        "cei": 6.576017616316676
+    },
+    "3591": {
+        "true_cls_name": "Water bottle",
+        "prediction_cls_name": "Pop bottle",
+        "explanation": "The model likely confused the frosted green bottle for a pop bottle due to its shape and the context of being in a bathroom, which might be associated with beverages. However, the label 'Water bottle' suggests the model should have recognized the bottle's function rather than its appearance.",
+        "cei": 94.16600801050663
+    },
+    "1435": {
+        "true_cls_name": "Nail",
+        "prediction_cls_name": "Screw",
+        "explanation": "The model may have been trained on a dataset that did not include tools like the one in the first image, leading it to incorrectly classify the object as a Screw due to its similar shape.",
+        "cei": 4.140608478337526
+    },
+    "356": {
+        "true_cls_name": "Binder",
+        "prediction_cls_name": "Space heater",
+        "explanation": "The model might have been misled by the vertical orientation and the presence of a figurine on the binder, which could have resembled a heater's design. Additionally, the context of the first image being a personal item rather than a functional appliance may have contributed to the misclassification.",
+        "cei": 19.250876782462
+    },
+    "345": {
+        "true_cls_name": "Binder",
+        "prediction_cls_name": "Wing",
+        "explanation": "The model may have been misled by the blue object's rectangular shape, which resembles wings due to its size and position relative to the hand. The context of the image, with the hand holding the object, might not have been fully considered by the model.",
+        "cei": 5.052866677579004
+    }
+}

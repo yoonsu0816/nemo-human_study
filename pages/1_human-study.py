@@ -10,8 +10,11 @@ from text_highlighter import text_highlighter
 
 st.set_page_config(page_title="Human Study", page_icon=":pencil2:", layout="wide", initial_sidebar_state="collapsed")
 
-dataset = "imagenet-r"
-target_model = "clip"
+dataset_model_list = [
+    "imagenet-r_vit",
+    "imagenetd_siglip",
+    "objectnet_vit",
+]
 
 test_mode = st.session_state.get("test_mode", False)
 
@@ -66,44 +69,64 @@ else:
 
 participant_id = st.session_state.participant_id
 
-# Load human-study-data
+if 'all_samples' not in st.session_state:
+    st.session_state.all_samples = []  # [(dataset, target_model, sample_key), ...]
+if 'results' not in st.session_state:
+    st.session_state.results = {}
+    
 human_study_data_dir = "./human-study-data"
-output_dir = os.path.join(human_study_data_dir, "outputs", f"{dataset}_{target_model}")
-samples_dir = os.path.join(human_study_data_dir, "data", "nemo", dataset, "samples")
-
-# Load result files
-result_retrieval = json.load(open(os.path.join(output_dir, "error_retrieval.json"), "r"))
-result_retrieval_cei = json.load(open(os.path.join(output_dir, "error_retrieval_cei.json"), "r"))    
-result_pixel = json.load(open(os.path.join(output_dir, "pixel_attribution.json"), "r"))
-result_pixel_cei = json.load(open(os.path.join(output_dir, "pixel_attribution_cei.json"), "r"))
-result_change = json.load(open(os.path.join(output_dir, "change_of_caption.json"), "r"))
-result_change_cei = json.load(open(os.path.join(output_dir, "change_of_caption_cei.json"), "r"))
-result_scitx = json.load(open(os.path.join(output_dir, "scitx.json"), "r"))
-result_scitx_cei = json.load(open(os.path.join(output_dir, "scitx_cei.json"), "r"))
-
-# Get available keys
-available_keys = list(result_retrieval.keys())
+# Load all samples from all dataset_model combinations
+if len(st.session_state.all_samples) == 0:
+    for dataset_model in dataset_model_list:
+        parts = dataset_model.split('_', 1)  # 첫 번째 '_'만으로 split
+        if len(parts) == 2:
+            dataset = parts[0]
+            target_model = parts[1]
+        else:
+            st.error(f"Invalid dataset_model: {dataset_model}")
+        
+        # Load data for this dataset_model combination
+        output_dir = os.path.join(human_study_data_dir, "outputs", f"{dataset}_{target_model}")
+        
+        # Check if output_dir exists
+        if os.path.exists(output_dir):
+            try:
+                # Load result files
+                st.session_state.results[dataset_model] = {
+                    "retrieval": json.load(open(os.path.join(output_dir, "subset_error_retrieval.json"), "r")),
+                    "pixel": json.load(open(os.path.join(output_dir, "subset_pixel_attribution.json"), "r")),
+                    "change": json.load(open(os.path.join(output_dir, "subset_change_of_caption.json"), "r")),
+                    "scitx": json.load(open(os.path.join(output_dir, "subset_scitx.json"), "r"))
+                }
+                
+                # Get available keys
+                available_keys = list(st.session_state.results[dataset_model]["retrieval"].keys())
+                # Add all samples from this dataset_model to all_samples
+                for key in available_keys:
+                    st.session_state.all_samples.append((dataset, target_model, key))
+            except Exception as e:
+                st.warning(f"Failed to load data for {dataset_model}: {str(e)}")
+        else:
+            st.warning(f"Output directory not found: {output_dir}")
 
 # Initialize session state
 if 'current_sample_idx' not in st.session_state:
     st.session_state.current_sample_idx = 0
-if 'ratings' not in st.session_state:
-    st.session_state.ratings = {}
+
 if 'explanation_order' not in st.session_state:
     st.session_state.explanation_order = {}
-if 'ranking_feedback' not in st.session_state:
-    st.session_state.ranking_feedback = {}
 if 'highlight_feedback' not in st.session_state:
     st.session_state.highlight_feedback = {}  # {rating_key_method_id: [{"text": "...", "rating": 1/-1, "detailed_feedback": "..."}]}
 if 'highlight_keys' not in st.session_state:
     st.session_state.highlight_keys = {}  # {rating_key_method_id: counter}
 
 # Get current sample
-if st.session_state.current_sample_idx >= len(available_keys):
+if st.session_state.current_sample_idx >= len(st.session_state.all_samples):
     st.success("🎉 모든 샘플 평가를 완료했습니다!")
     st.stop()
 
-selected_key = available_keys[st.session_state.current_sample_idx]
+current_dataset, current_target_model, selected_key = st.session_state.all_samples[st.session_state.current_sample_idx]
+samples_dir = os.path.join(human_study_data_dir, "data", "nemo", current_dataset, "samples")
 
 # Ranking function
 def render_ranking_question(
@@ -143,9 +166,6 @@ def render_ranking_question(
         if st.button("🔄 Reset", key=f"reset_{question_type}_{selected_key}", use_container_width=True):
             st.session_state[rankings_key] = {}
             st.rerun()
-    
-
-    
     
     col1, div1, col2, div2, col3, div3, col4 = st.columns([1, 0.05, 1, 0.05, 1, 0.05, 1])
     cols = [col1, col2, col3, col4]
@@ -278,14 +298,8 @@ def save_current_sample():
         "original_explanations": {mid: exp for mid, _, exp in explanations_data},
         "highlight_feedback": highlight_feedback_dict,
         "explanation_order": explanation_order_dict,
-        "cei_scores": {
-            "retrieval": result_retrieval_cei[selected_key]['cei'],
-            "pixel": result_pixel_cei[selected_key]['cei'],
-            "change": result_change_cei[selected_key]['cei'],
-            "scitx": result_scitx_cei[selected_key]['cei'],
-        },
-        "dataset": dataset,
-        "target_model": target_model
+        "dataset": current_dataset,
+        "target_model": current_target_model
     }
     
     # Save to MongoDB
@@ -336,16 +350,15 @@ st.title(":pencil2: Evaluation of Explanations for Model's Error")
 # Display progress at the top
 progress_col1, progress_col2 = st.columns([3, 1])
 with progress_col1:
-    progress_value = (st.session_state.current_sample_idx + 1) / len(available_keys)
+    progress_value = (st.session_state.current_sample_idx + 1) / len(st.session_state.all_samples)
     st.progress(progress_value)
 with progress_col2:
-    st.markdown(f"**Sample {st.session_state.current_sample_idx + 1} / {len(available_keys)}**")
+    st.markdown(f"**Sample {st.session_state.current_sample_idx + 1} / {len(st.session_state.all_samples)}**")
 
 st.markdown("---")
 
-
-
 # Get image path
+
 image_files = glob.glob(os.path.join(samples_dir, f"{selected_key}_*.jpg"))
 if image_files:
     image_path = image_files[0]
@@ -360,8 +373,8 @@ if image_path:
         st.image(image_path)
     
     with col2:
-        true_cls_name = result_pixel[selected_key]['true_cls_name']
-        prediction_cls_name = result_pixel[selected_key]['prediction_cls_name']
+        true_cls_name = st.session_state.results[current_dataset + "_" + current_target_model]["pixel"][selected_key]['true_cls_name']
+        prediction_cls_name = st.session_state.results[current_dataset + "_" + current_target_model]["pixel"][selected_key]['prediction_cls_name']
         st.markdown("")
         st.markdown("")
         st.markdown(f"### Error Information")
@@ -390,14 +403,14 @@ if image_path:
     st.markdown("---")
 
     st.markdown("## Evaluate Explanations")
-    rating_key = f"{participant_id}_{selected_key}"
+    rating_key = f"{participant_id}_{current_dataset}_{current_target_model}_{selected_key}"
     
     # Prepare explanations with method names (for saving later)
     explanations_data = [
-        ("retrieval", "Retrieval-based", result_retrieval[selected_key]['explanation']),
-        ("pixel", "Pixel Attribution", result_pixel[selected_key]['explanation']),
-        ("change", "Change of Caption", result_change[selected_key]['explanation']),
-        ("scitx", "Ours (SciTx)", result_scitx[selected_key]['explanation']),
+        ("retrieval", "Retrieval-based", st.session_state.results[current_dataset + "_" + current_target_model]["retrieval"][selected_key]['explanation']),
+        ("pixel", "Pixel Attribution", st.session_state.results[current_dataset + "_" + current_target_model]["pixel"][selected_key]['explanation']),
+        ("change", "Change of Caption", st.session_state.results[current_dataset + "_" + current_target_model]["change"][selected_key]['explanation']),
+        ("scitx", "Ours (SciTx)", st.session_state.results[current_dataset + "_" + current_target_model]["scitx"][selected_key]['explanation']),
     ]
     
     # Get or create random order for this sample
@@ -484,7 +497,7 @@ if image_path:
     # Navigation buttons
     nav_col1, nav_col2, nav_col3 = st.columns([1, 1, 1])
     
-    is_last_sample = st.session_state.current_sample_idx >= len(available_keys) - 1
+    is_last_sample = st.session_state.current_sample_idx >= len(st.session_state.all_samples) - 1
     
     def sync_highlight_feedback(current_highlights, rating_key, explanations_data):
         """현재 하이라이트 상태를 highlight_feedback에 동기화"""
@@ -528,23 +541,26 @@ if image_path:
         # Next button (right-aligned)
         if is_last_sample:
             if st.button("Submit", type="primary", use_container_width=True):
-                if not all_highlights_complete:
-                    st.warning("Please highlight at least one part (Good or Bad) for all explanations.")
-                if not all_questions_ranked:
-                    st.warning("Please rank all explanations for all questions before proceeding.")
-                if all_complete:
-                    sync_highlight_feedback(current_highlights, rating_key, explanations_data)
-                    save_current_sample()
-                    st.info("Thank you for your participation! Your responses have been saved.")
-                    st.stop()
+                st.stop()
+                # if not all_highlights_complete:
+                #     st.warning("Please highlight at least one part (Good or Bad) for all explanations.")
+                # if not all_questions_ranked:
+                #     st.warning("Please rank all explanations for all questions before proceeding.")
+                # if all_complete:
+                #     sync_highlight_feedback(current_highlights, rating_key, explanations_data)
+                #     save_current_sample()
+                #     st.info("Thank you for your participation! Your responses have been saved.")
+                #     st.stop()
         else:
             if st.button("Next →", type="primary", use_container_width=True):
-                if not all_highlights_complete:
-                    st.warning("Please highlight at least one part (Good or Bad) for all explanations.")
-                if not all_questions_ranked:
-                    st.warning("Please rank all explanations for all questions before proceeding.")
-                if all_complete:
-                    sync_highlight_feedback(current_highlights, rating_key, explanations_data)
-                    save_current_sample()  # Auto-save before moving to next
-                    st.session_state.current_sample_idx += 1
-                    st.rerun()
+                st.session_state.current_sample_idx += 1
+                st.rerun()
+                # if not all_highlights_complete:
+                #     st.warning("Please highlight at least one part (Good or Bad) for all explanations.")
+                # if not all_questions_ranked:
+                #     st.warning("Please rank all explanations for all questions before proceeding.")
+                # if all_complete:
+                #     sync_highlight_feedback(current_highlights, rating_key, explanations_data)
+                #     save_current_sample()  # Auto-save before moving to next
+                #     st.session_state.current_sample_idx += 1
+                #     st.rerun()
