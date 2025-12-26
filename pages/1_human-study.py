@@ -150,10 +150,71 @@ if 'highlight_keys' not in st.session_state:
 if 'study_completed' not in st.session_state:
     st.session_state.study_completed = False
 
-# Get current sample
-# if st.session_state.current_sample_idx >= len(st.session_state.all_samples):
-#     st.success("🎉 모든 샘플 평가를 완료했습니다!")
-#     st.stop()
+st.title(":pencil2: Evaluation of Explanations for Model's Error")
+
+# Check if study is completed
+if st.session_state.current_sample_idx >= len(st.session_state.all_samples) and st.session_state.study_completed:
+    # Get completion code from secrets.toml
+    completion_code = "COMPLETION_CODE_NOT_SET"
+    # completion_code = st.secrets.get("completion_code", "study1_completion_code", "COMPLETION_CODE_NOT_SET")
+    if "completion_code" in st.secrets and "study1_completion_code" in st.secrets["completion_code"]:
+        completion_code = st.secrets["completion_code"]["study1_completion_code"]
+    if completion_code == "COMPLETION_CODE_NOT_SET":
+        st.warning("⚠️ Completion code not found in secrets.toml. Please set it in the configuration file.")
+    
+    # Display completion screen
+    st.success("🎉 Thank you for completing the study!")
+    
+    st.markdown("---")
+    
+    # Display completion code
+    st.markdown("### Your Completion Code")
+    st.markdown(f"""
+    <div style="background-color: #e8f5e9; padding: 20px; border-radius: 10px; text-align: center; margin: 20px 0;">
+        <h2 style="color: #2e7d32; margin: 0;">{completion_code}</h2>
+    </div>
+    """, unsafe_allow_html=True)
+    
+    st.markdown("**Please copy this code and submit it on Prolific to receive your payment.**")
+    
+    st.markdown("---")
+    
+    # Free form comment section
+    st.markdown("### Optional Feedback")
+    st.markdown("We would appreciate any feedback or comments about your experience with this study.")
+    
+    comment = st.text_area(
+        "Your comments:",
+        value="",
+        height=150,
+        key="completion_comment_input",
+        placeholder="Please share any thoughts, suggestions, or issues you encountered during the study."
+    )
+    
+    if st.button("Submit Comment", type="primary"):
+        # Save comment to MongoDB only
+        if not test_mode and responses_collection is not None:
+            try:
+                responses_collection.update_one(
+                    {"participant_id": participant_id},
+                    {
+                        "$set": {
+                            "completion_comment": comment,
+                            "completion_code": completion_code,
+                            "completion_timestamp": datetime.utcnow()
+                        }
+                    },
+                    upsert=True
+                )
+                st.success("✅ Thank you for your feedback! Your comment has been saved.")
+            except Exception as e:
+                st.error(f"Failed to save comment: {str(e)}")
+        elif test_mode:
+            st.info("🧪 Test Mode: Comment saving is disabled")
+        else:
+            st.warning("⚠️ MongoDB connection not available. Comment could not be saved.")
+    
+    st.stop()
 
 current_dataset, current_target_model, selected_key = st.session_state.all_samples[st.session_state.current_sample_idx]
 samples_dir = os.path.join(human_study_data_dir, "data", "nemo", current_dataset, "samples")
@@ -374,72 +435,6 @@ def save_current_sample():
             st.warning(f"Failed to save JSON backup: {str(e)}")
         
     return True
-
-st.title(":pencil2: Evaluation of Explanations for Model's Error")
-
-# Check if study is completed
-if st.session_state.study_completed:
-    # Get completion code from secrets.toml
-    completion_code = "COMPLETION_CODE_NOT_SET"
-    # completion_code = st.secrets.get("completion_code", "study1_completion_code", "COMPLETION_CODE_NOT_SET")
-    if "completion_code" in st.secrets and "study1_completion_code" in st.secrets["completion_code"]:
-        completion_code = st.secrets["completion_code"]["study1_completion_code"]
-    if completion_code == "COMPLETION_CODE_NOT_SET":
-        st.warning("⚠️ Completion code not found in secrets.toml. Please set it in the configuration file.")
-    
-    # Display completion screen
-    st.success("🎉 Thank you for completing the study!")
-    
-    st.markdown("---")
-    
-    # Display completion code
-    st.markdown("### Your Completion Code")
-    st.markdown(f"""
-    <div style="background-color: #e8f5e9; padding: 20px; border-radius: 10px; text-align: center; margin: 20px 0;">
-        <h2 style="color: #2e7d32; margin: 0;">{completion_code}</h2>
-    </div>
-    """, unsafe_allow_html=True)
-    
-    st.markdown("**Please copy this code and submit it on Prolific to receive your payment.**")
-    
-    st.markdown("---")
-    
-    # Free form comment section
-    st.markdown("### Optional Feedback")
-    st.markdown("We would appreciate any feedback or comments about your experience with this study.")
-    
-    comment = st.text_area(
-        "Your comments:",
-        value="",
-        height=150,
-        key="completion_comment_input",
-        placeholder="Please share any thoughts, suggestions, or issues you encountered during the study."
-    )
-    
-    if st.button("Submit Comment", type="primary"):
-        # Save comment to MongoDB only
-        if not test_mode and responses_collection is not None:
-            try:
-                responses_collection.update_one(
-                    {"participant_id": participant_id},
-                    {
-                        "$set": {
-                            "completion_comment": comment,
-                            "completion_code": completion_code,
-                            "completion_timestamp": datetime.utcnow()
-                        }
-                    },
-                    upsert=True
-                )
-                st.success("✅ Thank you for your feedback! Your comment has been saved.")
-            except Exception as e:
-                st.error(f"Failed to save comment: {str(e)}")
-        elif test_mode:
-            st.info("🧪 Test Mode: Comment saving is disabled")
-        else:
-            st.warning("⚠️ MongoDB connection not available. Comment could not be saved.")
-    
-    st.stop()
 
 # Display progress at the top
 progress_col1, progress_col2 = st.columns([3, 1])
