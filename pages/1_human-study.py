@@ -120,6 +120,8 @@ if 'highlight_feedback' not in st.session_state:
     st.session_state.highlight_feedback = {}  # {rating_key_method_id: [{"text": "...", "rating": 1/-1, "detailed_feedback": "..."}]}
 if 'highlight_keys' not in st.session_state:
     st.session_state.highlight_keys = {}  # {rating_key_method_id: counter}
+if 'study_completed' not in st.session_state:
+    st.session_state.study_completed = False
 
 # Get current sample
 if st.session_state.current_sample_idx >= len(st.session_state.all_samples):
@@ -348,6 +350,70 @@ def save_current_sample():
 
 st.title(":pencil2: Evaluation of Explanations for Model's Error")
 
+# Check if study is completed
+if st.session_state.study_completed:
+    # Get completion code from secrets.toml
+    completion_code = "COMPLETION_CODE_NOT_SET"
+    # completion_code = st.secrets.get("completion_code", "study1_completion_code", "COMPLETION_CODE_NOT_SET")
+    if "completion_code" in st.secrets and "study1_completion_code" in st.secrets["completion_code"]:
+        completion_code = st.secrets["completion_code"]["study1_completion_code"]
+    if completion_code == "COMPLETION_CODE_NOT_SET":
+        st.warning("⚠️ Completion code not found in secrets.toml. Please set it in the configuration file.")
+    
+    # Display completion screen
+    st.success("🎉 Thank you for completing the study!")
+    
+    st.markdown("---")
+    
+    # Display completion code
+    st.markdown("### Your Completion Code")
+    st.markdown(f"""
+    <div style="background-color: #e8f5e9; padding: 20px; border-radius: 10px; text-align: center; margin: 20px 0;">
+        <h2 style="color: #2e7d32; margin: 0;">{completion_code}</h2>
+    </div>
+    """, unsafe_allow_html=True)
+    
+    st.markdown("**Please copy this code and submit it on Prolific to receive your payment.**")
+    
+    st.markdown("---")
+    
+    # Free form comment section
+    st.markdown("### Optional Feedback")
+    st.markdown("We would appreciate any feedback or comments about your experience with this study.")
+    
+    comment = st.text_area(
+        "Your comments:",
+        value="",
+        height=150,
+        key="completion_comment_input",
+        placeholder="Please share any thoughts, suggestions, or issues you encountered during the study."
+    )
+    
+    if st.button("Submit Comment", type="primary"):
+        # Save comment to MongoDB only
+        if not test_mode and responses_collection is not None:
+            try:
+                responses_collection.update_one(
+                    {"participant_id": participant_id},
+                    {
+                        "$set": {
+                            "completion_comment": comment,
+                            "completion_code": completion_code,
+                            "completion_timestamp": datetime.utcnow()
+                        }
+                    },
+                    upsert=True
+                )
+                st.success("✅ Thank you for your feedback! Your comment has been saved.")
+            except Exception as e:
+                st.error(f"Failed to save comment: {str(e)}")
+        elif test_mode:
+            st.info("🧪 Test Mode: Comment saving is disabled")
+        else:
+            st.warning("⚠️ MongoDB connection not available. Comment could not be saved.")
+    
+    st.stop()
+
 # Display progress at the top
 progress_col1, progress_col2 = st.columns([3, 1])
 with progress_col1:
@@ -504,6 +570,7 @@ if image_path:
     nav_col1, nav_col2, nav_col3 = st.columns([1, 1, 1])
     
     is_last_sample = st.session_state.current_sample_idx >= len(st.session_state.all_samples) - 1
+    is_last_sample = True
     
     def sync_highlight_feedback(current_highlights, rating_key, explanations_data):
         """현재 하이라이트 상태를 highlight_feedback에 동기화"""
@@ -547,26 +614,24 @@ if image_path:
         # Next button (right-aligned)
         if is_last_sample:
             if st.button("Submit", type="primary", use_container_width=True):
-                st.stop()
-                # if not all_highlights_complete:
-                #     st.warning("Please highlight at least one part (Good or Bad) for all explanations.")
-                # if not all_questions_ranked:
-                #     st.warning("Please rank all explanations for all questions before proceeding.")
-                # if all_complete:
-                #     sync_highlight_feedback(current_highlights, rating_key, explanations_data)
-                #     save_current_sample()
-                #     st.info("Thank you for your participation! Your responses have been saved.")
-                #     st.stop()
+                if not all_highlights_complete:
+                    st.warning("Please highlight at least one part (Good or Bad) for all explanations.")
+                if not all_questions_ranked:
+                    st.warning("Please rank all explanations for all questions before proceeding.")
+                if all_complete:
+                    sync_highlight_feedback(current_highlights, rating_key, explanations_data)
+                    save_current_sample()
+                    st.session_state.study_completed = True
+                    st.session_state.current_sample_idx += 1
+                    st.rerun()                
         else:
             if st.button("Next →", type="primary", use_container_width=True):
-                st.session_state.current_sample_idx += 1
-                st.rerun()
-                # if not all_highlights_complete:
-                #     st.warning("Please highlight at least one part (Good or Bad) for all explanations.")
-                # if not all_questions_ranked:
-                #     st.warning("Please rank all explanations for all questions before proceeding.")
-                # if all_complete:
-                #     sync_highlight_feedback(current_highlights, rating_key, explanations_data)
-                #     save_current_sample()  # Auto-save before moving to next
-                #     st.session_state.current_sample_idx += 1
-                #     st.rerun()
+                if not all_highlights_complete:
+                    st.warning("Please highlight at least one part (Good or Bad) for all explanations.")
+                if not all_questions_ranked:
+                    st.warning("Please rank all explanations for all questions before proceeding.")
+                if all_complete:
+                    sync_highlight_feedback(current_highlights, rating_key, explanations_data)
+                    save_current_sample()  # Auto-save before moving to next
+                    st.session_state.current_sample_idx += 1
+                    st.rerun()
