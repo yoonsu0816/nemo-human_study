@@ -76,6 +76,14 @@ if 'results' not in st.session_state:
     st.session_state.results = {}
     
 human_study_data_dir = "./human-study-data"
+
+# Define allowed sample IDs for each dataset (Study 1)
+allowed_samples = {
+    "imagenet-r": ["20472", "3950", "9582", "20688", "29327"],
+    "imagenetd": ["566", "1066", "2447", "2771", "2377"],
+    "objectnet": ["2731", "18075", "14720", "15661", "3172"]
+}
+
 # Load all samples from all dataset_model combinations
 if len(st.session_state.all_samples) == 0:
     for dataset_model in dataset_model_list:
@@ -85,6 +93,13 @@ if len(st.session_state.all_samples) == 0:
             target_model = parts[1]
         else:
             st.error(f"Invalid dataset_model: {dataset_model}")
+            continue
+        
+        # Get allowed sample IDs for this dataset
+        allowed_ids = allowed_samples.get(dataset, [])
+        if not allowed_ids:
+            st.warning(f"No allowed samples defined for dataset: {dataset}")
+            continue
         
         # Load data for this dataset_model combination
         output_dir = os.path.join(human_study_data_dir, "outputs", f"{dataset}_{target_model}")
@@ -100,11 +115,19 @@ if len(st.session_state.all_samples) == 0:
                     "scitx": json.load(open(os.path.join(output_dir, "subset_scitx.json"), "r"))
                 }
                 
-                # Get available keys
+                # Get available keys and filter by allowed IDs
                 available_keys = list(st.session_state.results[dataset_model]["retrieval"].keys())
-                # Add all samples from this dataset_model to all_samples
-                for key in available_keys:
+                # Filter to only include allowed sample IDs
+                filtered_keys = [key for key in available_keys if key in allowed_ids]
+                
+                # Add filtered samples from this dataset_model to all_samples
+                for key in filtered_keys:
                     st.session_state.all_samples.append((dataset, target_model, key))
+                
+                # Warn if some allowed IDs are not found
+                missing_ids = set(allowed_ids) - set(available_keys)
+                if missing_ids:
+                    st.warning(f"Some allowed sample IDs not found for {dataset_model}: {missing_ids}")
             except Exception as e:
                 st.warning(f"Failed to load data for {dataset_model}: {str(e)}")
         else:
