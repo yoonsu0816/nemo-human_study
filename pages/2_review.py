@@ -193,7 +193,7 @@ if image_path:
                     st.metric("CEI Score", f"{cei:.2f}")
                 
                 st.markdown("#### Explanation:")
-                st.markdown(f'<div style="font-size: 1.0em; padding: 15px; background-color: #f0f2f6; border-radius: 5px; line-height: 1.6;">{explanation}</div>', unsafe_allow_html=True)
+                st.info(explanation)
             else:
                 st.warning(f"No data available for {method_name}")
     

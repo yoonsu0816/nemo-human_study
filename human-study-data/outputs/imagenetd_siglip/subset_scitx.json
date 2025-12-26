@@ -2,61 +2,61 @@
     "566": {
         "true_cls_name": "Hamper",
         "prediction_cls_name": "Desk",
-        "explanation": "The model likely misclassified the image as a 'desk' due to the presence of a flat surface that resembles a desk, which is a common feature in office settings. The yellow top and black frame of the hamper could be mistaken for a desk's surface and legs, respectively, especially when the hamper is placed in an office environment where desks are prevalent.",
+        "explanation": "The model likely misclassified the image as a desk due to the presence of a flat surface that resembles a desk, which is a common feature in office settings. The yellow top and black frame of the hamper could be mistaken for a desk's surface and legs, respectively, especially when the hamper is placed in an office environment where desks are prevalent.",
         "cei": 67.45560425333679
     },
     "1066": {
         "true_cls_name": "Laptop",
         "prediction_cls_name": "Monitor",
-        "explanation": "The model misclassified the image because the large screen behind the laptop resembles a monitor more than a typical laptop screen. The presence of satellite dishes and a mechanical scene displayed on the screen further reinforces this perception, leading the model to predict 'Monitor' over 'Laptop'. The size and position of the screen relative to the laptop also contribute to the confusion.",
+        "explanation": "The model misclassified the image because the large screen behind the laptop resembles a monitor more than a typical laptop screen. The presence of satellite dishes and a mechanical scene displayed on the screen further reinforces this perception, leading the model to predict monitor over laptop. The size and position of the screen relative to the laptop also contribute to the confusion.",
         "cei": 87.82320618629456
     },
     "2447": {
         "true_cls_name": "Plunger",
         "prediction_cls_name": "Space Heater",
-        "explanation": "The model might have confused the red object with a Space Heater due to the similarity in shape and color. The cylindrical red object, often mistaken for a Plunger, shares a similar profile and color with some modern Space Heaters. However, the lack of visible branding, venting features typical of Space Heaters, and the setting under a shelter indicative of a Plunger further supports the model's misclassification.",
+        "explanation": "The model might have confused the red object with a space heater due to the similarity in shape and color. The cylindrical red object, often mistaken for a plunger, shares a similar profile and color with some modern space heaters. However, the lack of visible branding, venting features typical of space heaters, and the setting under a shelter indicative of a plunger further supports the model's misclassification.",
         "cei": 61.67882476001978
     },
     "2771": {
         "true_cls_name": "Saltshaker",
         "prediction_cls_name": "Table Lamp",
-        "explanation": "The model likely misclassified the object as a 'Table Lamp' due to the object's sleek, metallic design and its placement near a poolside, which could be mistaken for a decorative lamp. The object's shape and reflective surface resemble those of a modern Table Lamp rather than a Saltshaker.",
+        "explanation": "The model likely misclassified the object as a table lamp due to the object's sleek, metallic design and its placement near a poolside, which could be mistaken for a decorative lamp. The object's shape and reflective surface resemble those of a modern table lamp rather than a saltshaker.",
         "cei": 83.75685568898916
     },
     "2377": {
         "true_cls_name": "Plate",
         "prediction_cls_name": "Frying Pan",
-        "explanation": "The model likely misclassified the object as a 'Frying Pan' due to the presence of a handle-like structure on one of the plates, which resembles the handle of a frying pan. The texture and wear of the plates also contribute to the confusion, as they appear utilitarian and similar to cooking implements.",
+        "explanation": "The model likely misclassified the object as a frying pan due to the presence of a handle-like structure on one of the plates, which resembles the handle of a frying pan. The texture and wear of the plates also contribute to the confusion, as they appear utilitarian and similar to cooking implements.",
         "cei": 26.609187573194504
     },
     "3463": {
         "true_cls_name": "Tray",
         "prediction_cls_name": "Pot",
-        "explanation": "The model's misclassification can be attributed to the texture and shape of the container. Tray in tray images has a smooth, rounded edge with a consistent depth, resembling a shallow bowl or plate rather than a traditional Pot. The plants are arranged in a way that suggests they are placed in a shallow container rather than a deep Pot. The model may have been misled by the depth and shape of the container, which is more characteristic of a Tray than a Pot.",
+        "explanation": "The model's misclassification can be attributed to the texture and shape of the container. Tray in tray images has a smooth, rounded edge with a consistent depth, resembling a shallow bowl or plate rather than a traditional pot. The plants are arranged in a way that suggests they are placed in a shallow container rather than a deep pot. The model may have been misled by the depth and shape of the container, which is more characteristic of a tray than a pot.",
         "cei": 21.718774316832423
     },
     "3591": {
         "true_cls_name": "Water Bottle",
         "prediction_cls_name": "Pop Bottle",
-        "explanation": "The model's misclassification could be due to the frosted texture of the bottle, which resembles the appearance of a Pop Bottle more than a typical Water Bottle. The frosted finish gives the bottle a more textured and less transparent look, which might have led the model to confuse it with a Pop Bottle.",
+        "explanation": "The model's misclassification could be due to the frosted texture of the bottle, which resembles the appearance of a pop Bottle more than a typical water bottle. The frosted finish gives the bottle a more textured and less transparent look, which might have led the model to confuse it with a pop bottle.",
         "cei": 28.613874688744545
     },
     "1435": {
         "true_cls_name": "Nail",
         "prediction_cls_name": "Screw",
-        "explanation": "The model's misclassification likely occurred due to the similarity in appearance between the Nail and the Screw, particularly in terms of their metallic, cylindrical shape and the way they are embedded in materials. The lack of a visible head or threads on the Nail, which are common distinguishing features between nails and screws, may have confused the model, leading it to predict 'Screw' based on other contextual cues such as the setting in a concrete surface.",
+        "explanation": "The model's misclassification likely occurred due to the similarity in appearance between the nail and the screw, particularly in terms of their metallic, cylindrical shape and the way they are embedded in materials. The lack of a visible head or threads on the nail, which are common distinguishing features between nails and screws, may have confused the model, leading it to predict screw based on other contextual cues such as the setting in a concrete surface.",
         "cei": 62.19596127048135
     },
     "356": {
         "true_cls_name": "Binder",
         "prediction_cls_name": "Space Heater",
-        "explanation": "The model likely misclassified the object due to the presence of a small figurine on top of the object, which resembles a decorative element often found on Space Heaters. The clean lines and minimalist design of the object also contributed to the confusion, as both Space Heaters and Binders can have such features. However, the figurine was the most influential visual cue that led the model to predict 'Space Heater' over 'Binder'.",
+        "explanation": "The model likely misclassified the object due to the presence of a small figurine on top of the object, which resembles a decorative element often found on space heaters. The clean lines and minimalist design of the object also contributed to the confusion, as both space heaters and binders can have such features. However, the figurine was the most influential visual cue that led the model to predict space heater over binder.",
         "cei": 3.3019389491528273
     },
     "345": {
         "true_cls_name": "Binder",
         "prediction_cls_name": "Wing",
-        "explanation": "The model might have been misled by the narrow canyon environment, which resembles the wingspan of a bird, leading to the misclassification of 'Binder' as 'Wing'. The elongated shape of the blue object being held, combined with the vertical rock walls of the canyon, may have triggered a misinterpretation due to the similar visual cues.",
+        "explanation": "The model might have been misled by the narrow canyon environment, which resembles the wingspan of a bird, leading to the misclassification of binder as wing. The elongated shape of the blue object being held, combined with the vertical rock walls of the canyon, may have triggered a misinterpretation due to the similar visual cues.",
         "cei": 99.93641291075619
     }
 }

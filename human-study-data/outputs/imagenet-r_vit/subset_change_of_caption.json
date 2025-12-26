@@ -2,19 +2,19 @@
     "20472": {
         "true_cls_name": "Electric guitar",
         "prediction_cls_name": "Hatchet",
-        "explanation": "The model may have been misled by the intricate folding of the dollar bill in the first image, which could have resembled the detailed craftsmanship of a guitar's body. The lack of recognizable guitar features like strings and frets might have contributed to the misclassification.",
+        "explanation": "The model may have been misled by the intricate folding of the dollar bill in this image, which could have resembled the detailed craftsmanship of a guitar's body. The lack of recognizable guitar features like strings and frets might have contributed to the misclassification.",
         "cei": 93.94101398065686
     },
     "17475": {
         "true_cls_name": "Accordion",
         "prediction_cls_name": "Hatchet",
-        "explanation": "The model may have been misled by the abstract style of the first image, where the accordion's details were not clearly defined, leading it to incorrectly predict 'Hatchet' due to the lack of recognizable features.",
+        "explanation": "The model may have been misled by the abstract style of this image, where the accordion's details were not clearly defined, leading it to incorrectly predict 'Hatchet' due to the lack of recognizable features.",
         "cei": 91.13851133733988
     },
     "3950": {
         "true_cls_name": "Toucan",
         "prediction_cls_name": "Shield",
-        "explanation": "The model might have been misled by the similarity in the background elements such as the palm trees and the sunset, which are common features in both images. The model may have focused on these elements instead of recognizing the distinct shape and features of the toucan.",
+        "explanation": "The model might have been misled by the similarity in the background elements such as the palm trees and the sunset, which are common features in images of toucan and shield. The model may have focused on these elements instead of recognizing the distinct shape and features of the toucan.",
         "cei": 95.6463878042996
     },
     "9582": {
@@ -26,31 +26,31 @@
     "20366": {
         "true_cls_name": "Cowboy hat",
         "prediction_cls_name": "Tractor",
-        "explanation": "The model may have been misled by the mechanical components and overall structure of the first image, which included elements that could be mistaken for parts of a tractor rather than a cowboy hat.",
+        "explanation": "The model may have been misled by the mechanical components and overall structure of this image, which included elements that could be mistaken for parts of a tractor rather than a cowboy hat.",
         "cei": 29.914879286661744
     },
     "20688": {
         "true_cls_name": "Flute",
         "prediction_cls_name": "Parachute",
-        "explanation": "The model may have been misled by the text 'fallen.moon' at the top of the first image, which could have distracted it from recognizing the flute as the primary subject.",
+        "explanation": "The model may have been misled by the text 'fallen.moon' at the top of this image, which could have distracted it from recognizing the flute as the primary subject.",
         "cei": 28.70069518685341
     },
     "29327": {
         "true_cls_name": "Volcano",
         "prediction_cls_name": "Cauldron",
-        "explanation": "The model might have been misled by the close-up view of the lava in the first image, which could have resembled a cauldron due to its swirling and bubbling appearance. The model's failure to recognize the broader context of the volcanic landscape in the second image contributed to the misclassification.",
+        "explanation": "The model might have been misled by the close-up view of the lava in this image, which could have resembled a cauldron due to its swirling and bubbling appearance. The model's failure to recognize the broader context of the volcanic landscape in the image of cauldron contributed to the misclassification.",
         "cei": 28.715101443231106
     },
     "2336": {
         "true_cls_name": "African chameleon",
         "prediction_cls_name": "Iguana",
-        "explanation": "The model may have been misled by the vibrant colors and abstract style of the first image, which deviates from the typical black-and-white, realistic depiction of a chameleon often seen in illustrations.",
+        "explanation": "The model may have been misled by the vibrant colors and abstract style of this image, which deviates from the typical black-and-white, realistic depiction of a chameleon often seen in illustrations.",
         "cei": 12.076826021075249
     },
     "8507": {
         "true_cls_name": "Border collie",
         "prediction_cls_name": "Collie",
-        "explanation": "The model might have been misled by the detailed rendering of the first image, which includes a more expressive and lively depiction of the dog's face, leading it to incorrectly predict 'Collie' instead of 'Border collie'. The model may not have sufficiently considered the specific breed characteristics that distinguish a Border Collie from other collies.",
+        "explanation": "The model might have been misled by the detailed rendering of this image, which includes a more expressive and lively depiction of the dog's face, leading it to incorrectly predict 'Collie' instead of 'Border collie'. The model may not have sufficiently considered the specific breed characteristics that distinguish a Border Collie from other collies.",
         "cei": 10.521003603935242
     },
     "4285": {

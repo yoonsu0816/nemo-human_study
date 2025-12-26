@@ -1,1 +1,62 @@
-{"2731": {"true_cls_name": "Butcher's knife", "prediction_cls_name": "Weight (exercise)", "explanation": "The model likely confused the context of the first image with a different setting, possibly due to the presence of shoes and clothing which might have been misinterpreted as exercise equipment.", "cei": 62.25772952893749}, "18075": {"true_cls_name": "Whistle", "prediction_cls_name": "Hammer", "explanation": "The model may have been trained on a dataset that did not include various types of whistles, leading it to confuse the metallic object in the first image with a hammer due to its shape resembling a hammer's head.", "cei": 90.82365296781063}, "14720": {"true_cls_name": "Sunglasses", "prediction_cls_name": "Toilet paper roll", "explanation": "The model may have been misled by the context of the first image, where the sunglasses were placed near a toilet paper roll, which could have caused confusion due to the similar shape and placement of the sunglasses and the roll.", "cei": 95.81731781363487}, "15661": {"true_cls_name": "Toaster", "prediction_cls_name": "Portable heater", "explanation": "The model might have been misled by the shape and size of the device, which resembles a toaster, but the presence of a label and the context of the room (a bed) could have confused it into predicting it as a portable heater.", "cei": 55.5351547896862}, "3172": {"true_cls_name": "Candle", "prediction_cls_name": "Pitcher", "explanation": "The model may have been misled by the shape of the candle in the first image, which resembles a pitcher due to its elongated form, leading to the incorrect classification.", "cei": 86.3331139087677}, "2336": {"true_cls_name": "Broom", "prediction_cls_name": "Ruler", "explanation": "The model might have been misled by the presence of the broom in both images, but it failed to recognize the context of the first image where the broom is part of a domestic setting with a bed and personal items, which could be confusing for the model.", "cei": 64.22374844551086}, "13269": {"true_cls_name": "Soap dispenser", "prediction_cls_name": "Pill bottle", "explanation": "The model might have been misled by the shape and label design of the object in the first image, which resembles a pill bottle due to its size and shape, leading to the incorrect prediction.", "cei": 68.75114142894745}, "8316": {"true_cls_name": "Lipstick", "prediction_cls_name": "Padlock", "explanation": "The model may have been misled by the metallic sheen and cylindrical shape of the first object, which could be mistaken for a padlock due to its similar form factor. The lack of distinct features like a screw or a latch that are typically associated with a padlock might have contributed to this misclassification.", "cei": 98.400172078982}, "7703": {"true_cls_name": "Laptop (open)", "prediction_cls_name": "Paper towel", "explanation": "The model may have been misled by the closed appearance of the laptop in the first image, failing to recognize the brand logo and the overall shape that are distinctive features of a laptop.", "cei": 61.13598644733429}, "16543": {"true_cls_name": "TV", "prediction_cls_name": "Speaker", "explanation": "The model likely failed to recognize the reflective surface and the overall shape of the object in the first image as indicative of a TV, instead interpreting it as a speaker due to its rectangular form.", "cei": 12.362147029489279}}
+{
+    "2731": {
+        "true_cls_name": "Butcher's knife",
+        "prediction_cls_name": "Weight (exercise)",
+        "explanation": "The model likely confused the context of the image with a different setting, possibly due to the presence of shoes and clothing which might have been misinterpreted as exercise equipment.",
+        "cei": 62.25772952893749
+    },
+    "18075": {
+        "true_cls_name": "Whistle",
+        "prediction_cls_name": "Hammer",
+        "explanation": "The model may have been trained on a dataset that did not include various types of whistles, leading it to confuse the metallic object in the image with a hammer due to its shape resembling a hammer's head.",
+        "cei": 90.82365296781063
+    },
+    "14720": {
+        "true_cls_name": "Sunglasses",
+        "prediction_cls_name": "Toilet paper roll",
+        "explanation": "The model may have been misled by the context of the image, where the sunglasses were placed near a toilet paper roll, which could have caused confusion due to the similar shape and placement of the sunglasses and the roll.",
+        "cei": 95.81731781363487
+    },
+    "15661": {
+        "true_cls_name": "Toaster",
+        "prediction_cls_name": "Portable heater",
+        "explanation": "The model might have been misled by the shape and size of the device, which resembles a toaster, but the presence of a label and the context of the room (a bed) could have confused it into predicting it as a portable heater.",
+        "cei": 55.5351547896862
+    },
+    "3172": {
+        "true_cls_name": "Candle",
+        "prediction_cls_name": "Pitcher",
+        "explanation": "The model may have been misled by the shape of the candle in the image, which resembles a pitcher due to its elongated form, leading to the incorrect classification.",
+        "cei": 86.3331139087677
+    },
+    "2336": {
+        "true_cls_name": "Broom",
+        "prediction_cls_name": "Ruler",
+        "explanation": "The model might have been misled by the presence of the broom in both broom and ruler images, but it failed to recognize the context of the brrom image where the broom is part of a domestic setting with a bed and personal items, which could be confusing for the model.",
+        "cei": 64.22374844551086
+    },
+    "13269": {
+        "true_cls_name": "Soap dispenser",
+        "prediction_cls_name": "Pill bottle",
+        "explanation": "The model might have been misled by the shape and label design of the object in the image, which resembles a pill bottle due to its size and shape, leading to the incorrect prediction.",
+        "cei": 68.75114142894745
+    },
+    "8316": {
+        "true_cls_name": "Lipstick",
+        "prediction_cls_name": "Padlock",
+        "explanation": "The model may have been misled by the metallic sheen and cylindrical shape of the object, which could be mistaken for a padlock due to its similar form factor. The lack of distinct features like a screw or a latch that are typically associated with a padlock might have contributed to this misclassification.",
+        "cei": 98.400172078982
+    },
+    "7703": {
+        "true_cls_name": "Laptop (open)",
+        "prediction_cls_name": "Paper towel",
+        "explanation": "The model may have been misled by the closed appearance of the laptop in the image, failing to recognize the brand logo and the overall shape that are distinctive features of a laptop.",
+        "cei": 61.13598644733429
+    },
+    "16543": {
+        "true_cls_name": "TV",
+        "prediction_cls_name": "Speaker",
+        "explanation": "The model likely failed to recognize the reflective surface and the overall shape of the object in the first image as indicative of a TV, instead interpreting it as a speaker due to its rectangular form.",
+        "cei": 12.362147029489279
+    }
+}

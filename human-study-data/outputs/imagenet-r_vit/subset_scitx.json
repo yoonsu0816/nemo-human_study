@@ -26,13 +26,13 @@
     "20366": {
         "true_cls_name": "Cowboy hat",
         "prediction_cls_name": "Tractor",
-        "explanation": "The model's misclassification is due to the presence of a tractor element in the predicted image. The sculpture depicted in the image set of Tractor includes a clear, large tractor component that visually confounds the model into associating the overall image with a Tractor rather than a cowboy figure. The combination of the cowboy figure and the Tractor creates a multi-object interaction that the model may have misinterpreted as a single object due to the prominence and size of the Tractor.",
+        "explanation": "The model's misclassification is due to the presence of a tractor element in the image. The sculpture depicted in Tractor's images includes a clear, large tractor component that visually confounds the model into associating the overall image with a Tractor rather than a cowboy figure. The combination of the cowboy figure and the Tractor creates a multi-object interaction that the model may have misinterpreted as a single object due to the prominence and size of the Tractor.",
         "cei": 92.24090524949133
     },
     "20688": {
         "true_cls_name": "Flute",
         "prediction_cls_name": "Parachute",
-        "explanation": "The model's misclassification can be attributed to the presence of a Parachute in the predicted label set. The visual similarity between the character descending with a Parachute and the character playing a Flute in a serene, traditional setting led the model to confuse the two objects. The Parachute's association with descent and flight might have been more prominent than the Flute's association with music and stillness.",
+        "explanation": "The model's misclassification can be attributed to the presence of a Parachute. The visual similarity between the character descending with a Parachute and the character playing a Flute in a serene, traditional setting led the model to confuse the two objects. The Parachute's association with descent and flight might have been more prominent than the Flute's association with music and stillness.",
         "cei": 42.05195680260658
     },
     "29327": {
@@ -44,13 +44,13 @@
     "2336": {
         "true_cls_name": "African chameleon",
         "prediction_cls_name": "Iguana",
-        "explanation": "The model likely misclassified the image due to the vibrant green coloration and the presence of vivid textures and patterns, which are more characteristic of African chameleons than Iguanas. The abstract art style, with its exaggerated features and blend of colors, may have contributed to the confusion, as these traits are distinct from the more realistic depictions found in the Iguana set.",
+        "explanation": "The model likely misclassified the image due to the vibrant green coloration and the presence of vivid textures and patterns, which are more characteristic of African chameleons than Iguanas. The abstract art style, with its exaggerated features and blend of colors, may have contributed to the confusion, as these traits are distinct from the more realistic depictions.",
         "cei": 52.966056391596794
     },
     "8507": {
         "true_cls_name": "Border collie",
         "prediction_cls_name": "Collie",
-        "explanation": "The model misclassified the image as 'Collie' due to the shared visual characteristics between Border Collies and Collies, such as their fluffy coats and alert expressions. The detailed pencil sketch presented in the image set of Collie shows a dog with a fluffy coat and alert expression, which aligns closely with the features of both Border Collies and Collies. This similarity in appearance led the model to predict 'Collie' instead of accurately identifying the specific breed as 'Border collie'.",
+        "explanation": "The model misclassified the image as 'Collie' due to the shared visual characteristics between Border Collies and Collies, such as their fluffy coats and alert expressions. The detailed pencil sketch presented in Collie's images shows a dog with a fluffy coat and alert expression, which aligns closely with the features of both Border Collies and Collies. This similarity in appearance led the model to predict 'Collie' instead of accurately identifying the specific breed as 'Border collie'.",
         "cei": 25.187304615974426
     },
     "4285": {
