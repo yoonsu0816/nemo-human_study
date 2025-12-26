@@ -36,7 +36,7 @@ st.markdown("""
 
 # Test mode toggle
 # test_mode = st.checkbox("🧪 Test Mode (Skip participant ID and MongoDB)", value=False)
-test_mode = True
+test_mode = False
 st.session_state.test_mode = test_mode
 
 # Check if participant_id is already set

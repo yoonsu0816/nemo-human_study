@@ -132,6 +132,10 @@ if len(st.session_state.all_samples) == 0:
                 st.warning(f"Failed to load data for {dataset_model}: {str(e)}")
         else:
             st.warning(f"Output directory not found: {output_dir}")
+    
+    # Shuffle all samples to randomize the order
+    if len(st.session_state.all_samples) > 0:
+        random.shuffle(st.session_state.all_samples)
 
 # Initialize session state
 if 'current_sample_idx' not in st.session_state:
@@ -593,7 +597,6 @@ if image_path:
     nav_col1, nav_col2, nav_col3 = st.columns([1, 1, 1])
     
     is_last_sample = st.session_state.current_sample_idx >= len(st.session_state.all_samples) - 1
-    is_last_sample = True
     
     def sync_highlight_feedback(current_highlights, rating_key, explanations_data):
         """현재 하이라이트 상태를 highlight_feedback에 동기화"""
