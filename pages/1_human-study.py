@@ -147,9 +147,9 @@ if 'study_completed' not in st.session_state:
     st.session_state.study_completed = False
 
 # Get current sample
-if st.session_state.current_sample_idx >= len(st.session_state.all_samples):
-    st.success("🎉 모든 샘플 평가를 완료했습니다!")
-    st.stop()
+# if st.session_state.current_sample_idx >= len(st.session_state.all_samples):
+#     st.success("🎉 모든 샘플 평가를 완료했습니다!")
+#     st.stop()
 
 current_dataset, current_target_model, selected_key = st.session_state.all_samples[st.session_state.current_sample_idx]
 samples_dir = os.path.join(human_study_data_dir, "data", "nemo", current_dataset, "samples")
