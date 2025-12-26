@@ -570,7 +570,6 @@ if image_path:
     nav_col1, nav_col2, nav_col3 = st.columns([1, 1, 1])
     
     is_last_sample = st.session_state.current_sample_idx >= len(st.session_state.all_samples) - 1
-    is_last_sample = True
     
     def sync_highlight_feedback(current_highlights, rating_key, explanations_data):
         """현재 하이라이트 상태를 highlight_feedback에 동기화"""
