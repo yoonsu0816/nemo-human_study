@@ -3,6 +3,7 @@ import json
 import streamlit as st
 import random
 import glob
+import base64
 from datetime import datetime
 from pymongo import MongoClient
 from pymongo.errors import ConnectionFailure, DuplicateKeyError
@@ -50,11 +51,11 @@ db = mongodb_client["prj-nemo"] if mongodb_client is not None else None
 responses_collection = db["human-study-pilot"] if db is not None else None
 
 # Check if participant_id is set
-# if 'participant_id' not in st.session_state or not st.session_state.participant_id:
-#     st.warning("⚠️ Please enter your Participant ID first.")
-#     if st.button("Go to Registration Page"):
-#         st.switch_page("main.py")
-#     st.stop()
+if 'participant_id' not in st.session_state or not st.session_state.participant_id:
+    st.warning("⚠️ Please enter your Participant ID first.")
+    if st.button("Go to Registration Page"):
+        st.switch_page("main.py")
+    st.stop()
 if not test_mode:
     if 'participant_id' not in st.session_state or not st.session_state.participant_id:
         st.warning("⚠️ Please enter your Participant ID first.")
@@ -392,7 +393,16 @@ if image_path:
     # Display image and error info
     col1, col2 = st.columns([1, 1], gap="medium")
     with col1:
-        st.image(image_path, use_container_width=Trueㅕ)
+        # st.image(image_path, use_container_width=False)
+        with open(image_path, "rb") as img_file:
+            img_base64 = base64.b64encode(img_file.read()).decode()
+            img_ext = os.path.splitext(image_path)[1][1:]  # Get extension without dot
+            st.markdown(
+                f'<div style="height: 400px; display: flex; align-items: center; justify-content: center; overflow: hidden; background-color: transparent;">'
+                f'<img src="data:image/{img_ext};base64,{img_base64}" style="max-height: 100%; max-width: 100%; object-fit: contain;" />'
+                f'</div>',
+                unsafe_allow_html=True
+            )
     
     with col2:
         true_cls_name = st.session_state.results[current_dataset + "_" + current_target_model]["pixel"][selected_key]['true_cls_name']
@@ -487,14 +497,6 @@ if image_path:
         if method_id not in current_highlights or len(current_highlights[method_id]) == 0:
             all_highlights_complete = False
             missing_highlights.append(method_id)
-    # for method_id, _, _ in explanations_data:
-    #     highlight_feedback_key = f"{rating_key}_{method_id}"
-    #     if highlight_feedback_key not in st.session_state.highlight_feedback:
-    #         all_highlights_complete = False
-    #         missing_highlights.append(method_id)
-    #     elif len(st.session_state.highlight_feedback[highlight_feedback_key]) == 0:
-    #         all_highlights_complete = False
-    #         missing_highlights.append(method_id)
     
     all_complete = all_questions_ranked and all_highlights_complete
     
