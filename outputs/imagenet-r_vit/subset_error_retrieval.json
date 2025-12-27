@@ -1,0 +1,62 @@
+{
+    "20472": {
+        "true_cls_name": "Electric guitar",
+        "prediction_cls_name": "Hatchet",
+        "explanation": "Object is a miniature toy version of the real class.",
+        "cei": 95.85106270387769
+    },
+    "17475": {
+        "true_cls_name": "Accordion",
+        "prediction_cls_name": "Hammer",
+        "explanation": "Image is a line drawing lacking texture.",
+        "cei": 92.65180174261332
+    },
+    "3950": {
+        "true_cls_name": "Toucan",
+        "prediction_cls_name": "Shield",
+        "explanation": "Image is a stylized cartoon or animation frame.",
+        "cei": 94.83271883800626
+    },
+    "9582": {
+        "true_cls_name": "Pug",
+        "prediction_cls_name": "Vase",
+        "explanation": "Object is a tattoo or body art on skin.",
+        "cei": 92.1634066849947
+    },
+    "20366": {
+        "true_cls_name": "Cowboy hat",
+        "prediction_cls_name": "Tractor",
+        "explanation": "Object is in an unusual pose, hiding its face or limbs.",
+        "cei": 44.96322222985327
+    },
+    "20688": {
+        "true_cls_name": "Flute",
+        "prediction_cls_name": "Parachute",
+        "explanation": "An unnatural color filter alters the object's appearance.",
+        "cei": 82.86557868123055
+    },
+    "29327": {
+        "true_cls_name": "Volcano",
+        "prediction_cls_name": "Cauldron",
+        "explanation": "Heavy compression artifacts destroy edge details.",
+        "cei": 17.794387601315975
+    },
+    "2336": {
+        "true_cls_name": "African chameleon",
+        "prediction_cls_name": "Iguana",
+        "explanation": "Object is viewed from below, causing extreme foreshortening.",
+        "cei": 33.04496817290783
+    },
+    "8507": {
+        "true_cls_name": "Border collie",
+        "prediction_cls_name": "Collie",
+        "explanation": "Image is a print on a curved surface like a mug or shirt.",
+        "cei": 10.903963446617126
+    },
+    "4285": {
+        "true_cls_name": "Goose",
+        "prediction_cls_name": "Bathtub",
+        "explanation": "Object pattern blends perfectly into the background (camouflage).",
+        "cei": 4.241573344916105
+    }
+}

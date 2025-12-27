@@ -79,9 +79,9 @@ human_study_data_dir = "./human-study-data"
 
 # Define allowed sample IDs for each dataset (Study 1)
 allowed_samples = {
-    "imagenet-r": ["20472", "3950", "9582", "20688", "29327"],
-    "imagenetd": ["566", "1066", "2447", "2771", "2377"],
-    "objectnet": ["2731", "18075", "14720", "15661", "3172"]
+    "imagenet-r": ["17475", "20366", "2336", "8507", "4285"],
+    "imagenetd": ["3463", "3591", "1368", "356", "345"],
+    "objectnet": ["2336", "13269", "8316", "7703", "16543"]
 }
 
 # Load all samples from all dataset_model combinations

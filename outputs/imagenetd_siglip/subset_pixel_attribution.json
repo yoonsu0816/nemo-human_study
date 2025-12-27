@@ -1,0 +1,62 @@
+{
+    "566": {
+        "true_cls_name": "Hamper",
+        "prediction_cls_name": "Desk",
+        "explanation": "The model focused on the colorful patterned fabric, which it likely interpreted as part of a desk due to its flat and rectangular shape. However, this patterned fabric is actually a hamper, leading to the misclassification.",
+        "cei": 54.15480392985046
+    },
+    "1066": {
+        "true_cls_name": "Laptop",
+        "prediction_cls_name": "Monitor",
+        "explanation": "The model focused on the monitor, but it overlooked the laptop's body and screen, which are crucial for identifying the true label.",
+        "cei": 13.454116880893707
+    },
+    "2447": {
+        "true_cls_name": "Plunger",
+        "prediction_cls_name": "Space heater",
+        "explanation": "The model focused on the space heater, but it also highlighted the plunger, which is the true label. The model's attention on the plunger suggests that it might have been misclassified due to the similarity between the plunger and the space heater in terms of shape and color, leading to a confusion.",
+        "cei": 5.464836396276951
+    },
+    "2771": {
+        "true_cls_name": "Saltshaker",
+        "prediction_cls_name": "Table lamp",
+        "explanation": "The model focused on the blue and purple gradient regions around the table lamp, which are likely due to the lamp's reflective surface and the surrounding environment. These features are not relevant to the true label, 'Saltshaker,' which has distinct geometric shapes and a different color palette.",
+        "cei": 3.7508072331547737
+    },
+    "2377": {
+        "true_cls_name": "Plate",
+        "prediction_cls_name": "Frying pan",
+        "explanation": "The model focused on the circular shape of the frying pan, which is also characteristic of plates. This led to the misclassification as the model did not differentiate between the two based on additional features like the handle or the edge design.",
+        "cei": 4.886550456285477
+    },
+    "3463": {
+        "true_cls_name": "Tray",
+        "prediction_cls_name": "Pot",
+        "explanation": "The model focused on the green plant, which is part of the pot, but did not consider the overall shape and structure of the container, which is more indicative of tray.",
+        "cei": 7.350857881829143
+    },
+    "3591": {
+        "true_cls_name": "Water bottle",
+        "prediction_cls_name": "Pop bottle",
+        "explanation": "The model focused on the bright areas near the top left corner, which appear to be unrelated to water bottle. The model may have been misled by these irrelevant features, leading to the incorrect prediction.",
+        "cei": 2.6008248329162598
+    },
+    "1435": {
+        "true_cls_name": "Nail",
+        "prediction_cls_name": "Screw",
+        "explanation": "The model focused on the yellowish region near the center, which appears to be the screw's head, leading it to predict screw. However, this region is not characteristic of a nail, which typically has a different shape and texture. The model may have been misled by the bright color and shape of the screw's head, overlooking the more subtle features of the nail.",
+        "cei": 2.4476506747305393
+    },
+    "356": {
+        "true_cls_name": "Binder",
+        "prediction_cls_name": "Space heater",
+        "explanation": "The model focused on the bright yellow region, which appears to be part of the space heater's design, but this area is not representative of binder. The model may have been misled by the bright color and shape of the space heater, overlooking the more subtle details that define the binder, such as its flat, rectangular shape with a spine.",
+        "cei": 2.574868453666568
+    },
+    "345": {
+        "true_cls_name": "Binder",
+        "prediction_cls_name": "Wing",
+        "explanation": "The model focused on the blue rectangular area, which appears to be part of the binder's cover, but it misclassified this as a wing due to the similarity in shape and color gradient. The model did not consider the context of the image, which includes the presence of a person holding a binder, indicating that the blue area should be associated with binder.",
+        "cei": 4.210733140644152
+    }
+}

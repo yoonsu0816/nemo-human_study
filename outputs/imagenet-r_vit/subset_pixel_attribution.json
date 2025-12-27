@@ -1,0 +1,62 @@
+{
+    "20472": {
+        "true_cls_name": "Electric guitar",
+        "prediction_cls_name": "Hatchet",
+        "explanation": "The model focused on the handle and body of the object, which are common features of both a hatchet and an electric guitar. However, it did not sufficiently highlight the neck and headstock, which are distinctive features of an electric guitar and crucial for its identification.",
+        "cei": 95.75754897668958
+    },
+    "17475": {
+        "true_cls_name": "Accordion",
+        "prediction_cls_name": "Hammer",
+        "explanation": "The model focused on the violin-like shapes, which are visually similar to a hammer, leading it to predict 'Hammer' instead of the true label 'Accordion'. The model did not consider the overall structure and context of the image, which includes the accordion's bellows and keys.",
+        "cei": 93.69299355894327
+    },
+    "3950": {
+        "true_cls_name": "Toucan",
+        "prediction_cls_name": "Shield",
+        "explanation": "The model focused on the hammock and palm trees, which are irrelevant to the true label 'Toucan'. The toucan's beak and head, which are key features for identifying the animal.",
+        "cei": 70.71955846622586
+    },
+    "9582": {
+        "true_cls_name": "Pug",
+        "prediction_cls_name": "Vase",
+        "explanation": "The model focused on the abstract, colorful regions of the image, which are not representative of the true label 'Pug'. The pug's distinct features, such as its face and body shape, leading to the misclassification.",
+        "cei": 87.08737380802631
+    },
+    "20366": {
+        "true_cls_name": "Cowboy hat",
+        "prediction_cls_name": "Tractor",
+        "explanation": "The model focused on the tractor's body and wheels, which are prominent features in the image. However, it overlooked the Cowboy hat, which is a key characteristic of the Cowboy hat. The GradCAM visualization suggests that the model was misled by the tractor's structure rather than recognizing the Cowboy hat.",
+        "cei": 88.32589932717383
+    },
+    "20688": {
+        "true_cls_name": "Flute",
+        "prediction_cls_name": "Parachute",
+        "explanation": "The model focused on the blue gradient region near the character's body, which might be interpreted as part of a parachute due to its shape. However, this area is not relevant to 'Flute,' which is represented by the red gradient near the character's head.",
+        "cei": 60.01748517155647
+    },
+    "29327": {
+        "true_cls_name": "Volcano",
+        "prediction_cls_name": "Cauldron",
+        "explanation": "The model focused on the glowing, fiery regions near the bottom of the image. These regions are misleadingly similar to the appearance of a cauldron, leading the model to predict 'Cauldron' instead of the correct 'Volcano'.",
+        "cei": 34.30241998285055
+    },
+    "2336": {
+        "true_cls_name": "African chameleon",
+        "prediction_cls_name": "Iguana",
+        "explanation": "The model focused on the bird-like features of the image, leading it to predict 'Iguana'.",
+        "cei": 26.715971156954765
+    },
+    "8507": {
+        "true_cls_name": "Border collie",
+        "prediction_cls_name": "Collie",
+        "explanation": "The model focused on the vibrant colors and patterns around the dog's face, which may have been misinterpreted as features specific to a collie breed rather than the more subtle facial structure and coloration typical of a Border collie.",
+        "cei": 32.824185490608215
+    },
+    "4285": {
+        "true_cls_name": "Goose",
+        "prediction_cls_name": "Bathtub",
+        "explanation": "The model focused on the colorful, abstract patterns on the wall, which are not relevant to 'Goose'. The model did not consider the presence of the Goose, which was likely obscured by the vibrant background.",
+        "cei": 95.11436251923442
+    }
+}

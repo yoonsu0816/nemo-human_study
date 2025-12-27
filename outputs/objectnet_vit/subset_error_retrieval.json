@@ -1,0 +1,62 @@
+{
+    "2731": {
+        "true_cls_name": "Butcher's knife",
+        "prediction_cls_name": "Weight (exercise)",
+        "explanation": "Object is viewed from directly above, obscuring the side profile.",
+        "cei": 77.38869047025219
+    },
+    "18075": {
+        "true_cls_name": "Whistle",
+        "prediction_cls_name": "Hammer",
+        "explanation": "Camera is too close, showing only texture without shape.",
+        "cei": 93.45367215573788
+    },
+    "14720": {
+        "true_cls_name": "Sunglasses",
+        "prediction_cls_name": "Toilet paper roll",
+        "explanation": "Image is overexposed, washing out the object's contours.",
+        "cei": 77.72461995482445
+    },
+    "15661": {
+        "true_cls_name": "Toaster",
+        "prediction_cls_name": "Portable heater",
+        "explanation": "Camera is too close, showing only texture without shape.",
+        "cei": 78.7176601588726
+    },
+    "3172": {
+        "true_cls_name": "Candle",
+        "prediction_cls_name": "Pitcher",
+        "explanation": "Object is viewed from directly above, obscuring the side profile.",
+        "cei": 82.72823095321655
+    },
+    "2336": {
+        "true_cls_name": "Broom",
+        "prediction_cls_name": "Ruler",
+        "explanation": "Image is a collage of multiple different objects.",
+        "cei": 90.70977568626404
+    },
+    "13269": {
+        "true_cls_name": "Soap dispenser",
+        "prediction_cls_name": "Pill bottle",
+        "explanation": "Image is overexposed, washing out the object's contours.",
+        "cei": 42.254385352134705
+    },
+    "8316": {
+        "true_cls_name": "Lipstick",
+        "prediction_cls_name": "Padlock",
+        "explanation": "Object is viewed from directly above, obscuring the side profile.",
+        "cei": 20.898362481966615
+    },
+    "7703": {
+        "true_cls_name": "Laptop (open)",
+        "prediction_cls_name": "Paper towel",
+        "explanation": "A hand is holding the object, covering key features.",
+        "cei": 60.31613647937775
+    },
+    "16543": {
+        "true_cls_name": "TV",
+        "prediction_cls_name": "Speaker",
+        "explanation": "Camera is too close, showing only texture without shape.",
+        "cei": 71.74057578667998
+    }
+}
