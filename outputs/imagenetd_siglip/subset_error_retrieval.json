@@ -58,11 +58,5 @@
         "prediction_cls_name": "Wing",
         "explanation": "An unexpected object visually interrupts the main subject (photobomb).",
         "cei": 0.831063168880064
-    },
-    "1368": {
-        "true_cls_name": "Coffee mug",
-        "prediction_cls_name": "Greenhouse",
-        "explanation": "Object is lost in a crowded, cluttered scene.",
-        "cei": 0.1001
     }
 }

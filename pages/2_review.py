@@ -153,7 +153,7 @@ if image_path:
     col1, col2 = st.columns([1, 1], gap="medium")
     
     with col1:
-        st.image(image_path, use_container_width=True)
+        st.image(image_path)
     
     with col2:
         st.markdown("")

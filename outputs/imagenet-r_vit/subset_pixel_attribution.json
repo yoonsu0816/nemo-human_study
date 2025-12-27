@@ -26,7 +26,7 @@
     "20366": {
         "true_cls_name": "Cowboy hat",
         "prediction_cls_name": "Tractor",
-        "explanation": "The model focused on the tractor's body and wheels, which are prominent features in the image. However, it overlooked the Cowboy hat, which is a key characteristic of the Cowboy hat.",
+        "explanation": "The model focused on the tractor's body and wheels, which are prominent features in the image. However, it overlooked the Cowboy hat, which is a key characteristic of the Cowboy hat. The GradCAM visualization suggests that the model was misled by the tractor's structure rather than recognizing the Cowboy hat.",
         "cei": 88.32589932717383
     },
     "20688": {

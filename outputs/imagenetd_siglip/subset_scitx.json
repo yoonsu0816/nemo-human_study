@@ -58,11 +58,5 @@
         "prediction_cls_name": "Wing",
         "explanation": "The model might have been misled by the narrow canyon environment, which resembles the wingspan of a bird, leading to the misclassification of binder as wing. The elongated shape of the blue object being held, combined with the vertical rock walls of the canyon, may have triggered a misinterpretation due to the similar visual cues.",
         "cei": 99.93641291075619
-    },
-    "1368": {
-        "true_cls_name": "Coffee mug",
-        "prediction_cls_name": "Greenhouse",
-        "explanation": "The model likely misclassified the image because the background dominated the visual features, leading it to predict 'greenhouse' instead of 'coffee mug'. The dense arrangement of potted plants and the overall structure resembling a greenhouse were more prominent than the single coffee mug, which was smaller and less distinct.",
-        "cei": 38.4703
     }
 }

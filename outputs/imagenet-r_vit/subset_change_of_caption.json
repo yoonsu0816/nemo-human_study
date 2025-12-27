@@ -7,8 +7,8 @@
     },
     "17475": {
         "true_cls_name": "Accordion",
-        "prediction_cls_name": "Hammer",
-        "explanation": "The model may have been misled by the abstract style of this image, where the accordion's details were not clearly defined, leading it to incorrectly predict 'Hammer' due to the lack of recognizable features.",
+        "prediction_cls_name": "Hatchet",
+        "explanation": "The model may have been misled by the abstract style of this image, where the accordion's details were not clearly defined, leading it to incorrectly predict 'Hatchet' due to the lack of recognizable features.",
         "cei": 91.13851133733988
     },
     "3950": {
