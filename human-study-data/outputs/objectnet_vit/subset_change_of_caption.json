@@ -56,7 +56,7 @@
     "16543": {
         "true_cls_name": "TV",
         "prediction_cls_name": "Speaker",
-        "explanation": "The model likely failed to recognize the reflective surface and the overall shape of the object in the first image as indicative of a TV, instead interpreting it as a speaker due to its rectangular form.",
+        "explanation": "The model likely failed to recognize the reflective surface and the overall shape of the object in the image as indicative of a TV, instead interpreting it as a speaker due to its rectangular form.",
         "cei": 12.362147029489279
     }
 }
