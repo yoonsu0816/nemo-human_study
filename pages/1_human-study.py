@@ -417,6 +417,13 @@ def save_current_sample():
                 upsert=True,
                 return_document=ReturnDocument.BEFORE
             )
+            if previous_document:
+                document["previous_version"] = previous_document
+                # Update again with previous_version included
+                responses_collection.update_one(
+                    filter_query,
+                    {"$set": document}
+                )
             # previous_document will be None if it's a new document (upsert), otherwise it contains the old values
         except Exception as e:
             st.error(f"Failed to save to MongoDB: {str(e)}")
