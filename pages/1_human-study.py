@@ -7,6 +7,7 @@ import base64
 from datetime import datetime
 from pymongo import MongoClient
 from pymongo.errors import ConnectionFailure, DuplicateKeyError
+from pymongo import ReturnDocument
 from text_highlighter import text_highlighter
 
 st.set_page_config(page_title="Human Study", page_icon=":pencil2:", layout="wide", initial_sidebar_state="collapsed")
@@ -341,7 +342,7 @@ ranking_questions = [
         "type": "specificity",
         "number": "4",
         "title": "Specificity",
-        "text": "Q. Which explanation do you find **provides more specific and relecant details** about the model's error compared to the others? Select Rank (1st to 4th):"
+        "text": "Q. Which explanation do you find **provides more specific and relevant details** about the model's error compared to the others? Select Rank (1st to 4th):"
     },
     {
         "type": "actionability",
@@ -399,17 +400,24 @@ def save_current_sample():
         return True
     elif responses_collection is not None:
         try:
-            # Use upsert to update if exists, insert if new
-            # Unique index on (participant_id, sample_key) should be created in MongoDB
+            # Use find_one_and_update to get the previous value before update
+            # Unique index on (participant_id, sample_key, dataset, target_model, true_class, predicted_class) should be created in MongoDB
             filter_query = {
                 "participant_id": participant_id,
-                "sample_key": selected_key
+                "sample_key": selected_key,
+                "dataset": current_dataset,
+                "target_model": current_target_model,
+                "true_class": true_cls_name,
+                "predicted_class": prediction_cls_name
             }
-            responses_collection.update_one(
+            # Get the previous document before update
+            previous_document = responses_collection.find_one_and_update(
                 filter_query,
                 {"$set": document},
-                upsert=True
+                upsert=True,
+                return_document=ReturnDocument.BEFORE
             )
+            # previous_document will be None if it's a new document (upsert), otherwise it contains the old values
         except Exception as e:
             st.error(f"Failed to save to MongoDB: {str(e)}")
             return False
