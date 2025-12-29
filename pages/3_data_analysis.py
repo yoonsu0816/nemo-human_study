@@ -73,6 +73,7 @@ with filter_col2:
         default=dataset_model_combinations if len(dataset_model_combinations) > 0 else []
     )
     use_date_filter = st.checkbox("Filter by Date Range", value=False)
+    filter_complete_only = st.checkbox("Complete participants only (15 documents)", value=False)
     
     date_start = None
     date_end = None
@@ -131,6 +132,27 @@ if use_date_filter and date_start and date_end:
 # Get data
 all_responses = list(responses_collection.find(query))
 
+# Filter by complete participants (15 documents) if requested
+if filter_complete_only:
+    # Count documents per participant
+    participant_counts = {}
+    for response in all_responses:
+        participant_id = response.get("participant_id")
+        if participant_id:
+            participant_counts[participant_id] = participant_counts.get(participant_id, 0) + 1
+    
+    # Get participants with exactly 15 documents
+    complete_participants = {
+        pid for pid, count in participant_counts.items() 
+        if count == 15
+    }
+    
+    # Filter responses to only include complete participants
+    all_responses = [
+        response for response in all_responses 
+        if response.get("participant_id") in complete_participants
+    ]
+
 if len(all_responses) == 0:
     st.info("No data found matching the selected filters.")
     st.stop()
@@ -147,8 +169,17 @@ with col3:
     unique_samples = len(set((r["dataset"], r["target_model"], r["sample_key"]) for r in all_responses))
     st.metric("Unique Samples", unique_samples)
 with col4:
-    completion_count = sum(1 for r in all_responses if "completion_comment" in r)
-    st.metric("Completed Studies", completion_count)
+    # Count complete participants (15 documents)
+    participant_doc_counts = {}
+    for response in all_responses:
+        participant_id = response.get("participant_id")
+        if participant_id:
+            participant_doc_counts[participant_id] = participant_doc_counts.get(participant_id, 0) + 1
+    complete_count = sum(1 for count in participant_doc_counts.values() if count == 15)
+    st.metric("Complete Participants", complete_count)
+# with col4:
+#     completion_count = sum(1 for r in all_responses if "completion_comment" in r)
+#     st.metric("Completed Studies", completion_count)
 
 st.markdown("---")
 
