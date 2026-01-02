@@ -73,7 +73,7 @@ with filter_col2:
         default=dataset_model_combinations if len(dataset_model_combinations) > 0 else []
     )
     use_date_filter = st.checkbox("Filter by Date Range", value=False)
-    filter_complete_only = st.checkbox("Complete participants only (15 documents)", value=False)
+    filter_complete_only = st.checkbox("Complete participants only (at least 14 documents)", value=False)
     
     date_start = None
     date_end = None
@@ -144,7 +144,7 @@ if filter_complete_only:
     # Get participants with exactly 15 documents
     complete_participants = {
         pid for pid, count in participant_counts.items() 
-        if count == 15
+        if count >= 14
     }
     
     # Filter responses to only include complete participants
@@ -309,9 +309,9 @@ elif view_mode == "Ranking Analysis":
     criteria_list = ["overall", "factuality", "verbosity", "specificity", "actionability"]
     method_names = ["retrieval", "pixel", "change", "scitx"]
     method_display_names = {
-        "retrieval": "Retrieval-based",
-        "pixel": "Pixel Attribution",
-        "change": "Change of Caption",
+        "retrieval": "Retrieval",
+        "pixel": "CamMLLM",
+        "change": "ChangeMLLM",
         "scitx": "Ours (SciTx)"
     }
     
@@ -332,13 +332,21 @@ elif view_mode == "Ranking Analysis":
         
         # Prepare data for visualization
         chart_data = []
+        # Calculate total counts per method for percentage calculation
+        method_totals = {}
         for method in method_names:
+            method_totals[method] = sum(rankings_data[criteria][method].values())
+        
+        for method in method_names:
+            total = method_totals[method]
             for rank in [1, 2, 3, 4]:
                 count = rankings_data[criteria][method][rank]
+                percentage = (count / total * 100) if total > 0 else 0
                 chart_data.append({
                     "Method": method_display_names[method],
                     "Rank": f"Rank {rank}",
-                    "Count": count
+                    "Count": count,
+                    "Percentage": percentage
                 })
         
         if chart_data:
@@ -350,14 +358,21 @@ elif view_mode == "Ranking Analysis":
                 x="Method",
                 y="Count",
                 color="Rank",
+                text="Percentage",
                 title=f"{criteria.capitalize()} - Distribution of Rankings by Method",
                 color_discrete_map={
-                    "Rank 1": "#2ecc71",  # Green for best
-                    "Rank 2": "#3498db",  # Blue
+                    "Rank 1": "#3498db",  # Blue for best
+                    "Rank 2": "#2ecc71",  # Green
                     "Rank 3": "#f39c12",  # Orange
                     "Rank 4": "#e74c3c"   # Red for worst
                 },
                 barmode="stack"
+            )
+            # Update text template to show percentage with fixed font size
+            fig.update_traces(
+                texttemplate='%{text:.1f}%',
+                textposition='inside',
+                textfont=dict(size=12)
             )
             fig.update_layout(
                 xaxis_title="Method",

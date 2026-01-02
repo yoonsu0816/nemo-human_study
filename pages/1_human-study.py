@@ -392,7 +392,7 @@ if image_path:
     # Display image and error info
     col1, col2 = st.columns([1, 1], gap="medium")
     with col1:
-        st.image(image_path, use_container_width=Trueㅕ)
+        st.image(image_path, use_container_width=True)
     
     with col2:
         true_cls_name = st.session_state.results[current_dataset + "_" + current_target_model]["pixel"][selected_key]['true_cls_name']
